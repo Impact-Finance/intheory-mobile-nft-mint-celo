@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import GlobalContext from '../utils/global-context';
 import '../styles/globals.css';
@@ -31,12 +32,16 @@ export default function MyApp({ Component, pageProps }) {
         </Head>
         <div className="container">
           <div className="AppBox">
-            <Image
-              src="/images/intheory-logo.png"
-              alt="inTheory Logo"
-              width={592}
-              height={125}
-            />
+            <Link href="/">
+              <div style={{ cursor: 'pointer' }}>
+                <Image
+                  src="/images/intheory-logo.png"
+                  alt="inTheory Logo"
+                  width={592}
+                  height={125}
+                />
+              </div>
+            </Link>
             <Component {...pageProps} />
           </div>
         </div>

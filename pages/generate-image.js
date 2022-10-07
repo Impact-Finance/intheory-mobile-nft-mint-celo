@@ -13,13 +13,6 @@ export default function GenerateImage() {
     isFailed: false,
   });
 
-  const handleRefresh = () => {
-    global.update({
-      submittedTopics: [],
-      imageURL: '',
-    });
-  };
-
   useEffect(() => {
     async function makeAPICall() {
       const topicString = global.submittedTopics.join(' | ');
@@ -52,7 +45,7 @@ export default function GenerateImage() {
               <h3>Uh oh! Image generation failed!</h3>
             </div>
             <Link href="/select-topics">
-              <button onClick={handleRefresh}>Try again</button>
+              <button>Try again</button>
             </Link>
           </>
         ) : isReturned.isLoaded ? (
@@ -78,7 +71,6 @@ export default function GenerateImage() {
                   Don&apos;t like your image?{' '}
                   <Link href="/select-topics">
                     <span
-                      onClick={handleRefresh}
                       style={{
                         color: '#68eaff',
                         fontWeight: '600',
