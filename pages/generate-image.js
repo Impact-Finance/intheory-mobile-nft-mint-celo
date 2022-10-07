@@ -68,7 +68,7 @@ export default function GenerateImage() {
                   marginTop: '1rem',
                 }}>
                 <p>
-                  Don't like your image?{' '}
+                  Don&apos;t like your image?{' '}
                   <span
                     style={{
                       color: '#68eaff',

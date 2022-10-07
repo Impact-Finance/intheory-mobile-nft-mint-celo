@@ -28,7 +28,7 @@ export default function HowTo() {
         </div>
       </div>
       <Link href="/select-topics">
-        <button>Let's go!</button>
+        <button>Let&apos;s go!</button>
       </Link>
     </>
   );
