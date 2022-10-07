@@ -13,10 +13,15 @@ export default function GenerateImage() {
     isFailed: false,
   });
 
+  const handleRefresh = () => {
+    global.update({
+      submittedTopics: [],
+      imageURL: '',
+    });
+  };
+
   useEffect(() => {
     async function makeAPICall() {
-      console.log('MAKING API CALL');
-      console.log(global.submittedTopics);
       const topicString = global.submittedTopics.join(' | ');
       const styleNumbers = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17, 19, 21];
       const imgStyle =
@@ -46,11 +51,13 @@ export default function GenerateImage() {
               />
               <h3>Uh oh! Image generation failed!</h3>
             </div>
-            <button>Try again</button>
+            <Link href="/select-topics">
+              <button onClick={handleRefresh}>Try again</button>
+            </Link>
           </>
         ) : isReturned.isLoaded ? (
           <>
-            <div style={{ marginBottom: '15px' }}>
+            <div>
               <img
                 className={styles.deliveredImg}
                 src={global.imageURL}
@@ -69,14 +76,17 @@ export default function GenerateImage() {
                 }}>
                 <p>
                   Don&apos;t like your image?{' '}
-                  <span
-                    style={{
-                      color: '#68eaff',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                    }}>
-                    Try again
-                  </span>
+                  <Link href="/select-topics">
+                    <span
+                      onClick={handleRefresh}
+                      style={{
+                        color: '#68eaff',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                      }}>
+                      Try again
+                    </span>
+                  </Link>
                 </p>
               </div>
             </div>

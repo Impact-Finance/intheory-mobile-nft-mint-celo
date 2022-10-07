@@ -34,6 +34,7 @@
   border: 1px solid #68eaff !important;
   border-radius: 15px;
   width: 55%;
+  margin-bottom: 15px;
 }
 
 @keyframes animate {
