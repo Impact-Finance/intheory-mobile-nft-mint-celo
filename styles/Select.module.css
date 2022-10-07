@@ -1,0 +1,30 @@
+.stepHeader {
+  display: flex;
+  align-items: center;
+}
+
+.numberIcon {
+  background-color: #002060;
+  color: #68eaff;
+  border: #68eaff solid 2px;
+  border-radius: 5px;
+  font-family: Orbitron;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 0rem;
+  min-width: 3rem;
+}
+
+.stepText {
+  font-size: 1.15em;
+  text-align: left;
+  margin-left: 1rem;
+  font-weight: normal;
+}
+
+.warning {
+  color: #fe00fe;
+  font-weight: 600;
+  font-size: 0.8em;
+}

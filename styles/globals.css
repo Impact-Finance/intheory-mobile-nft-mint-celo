@@ -2,8 +2,18 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Jura, sans-serif;
+}
+
+body {
+  color: white;
+  background-color: #002060;
+  background-image: linear-gradient(
+      90deg,
+      rgba(104, 234, 255, 0.25),
+      rgba(104, 234, 255, 0)
+    ),
+    linear-gradient(270deg, rgba(104, 234, 255, 0.15), rgba(104, 234, 255, 0));
 }
 
 a {
@@ -15,12 +25,91 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
+h1,
+h2,
+button {
+  font-family: Orbitron, sans-serif;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.container {
+  padding: 0.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AppBox {
+  text-align: center;
+  border: 1px #68eaff solid;
+  border-radius: 20px;
+  background-image: url(../public/images/hexagons.png);
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  height: 92vh;
+  max-width: 500px;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button {
+  color: #68eaff;
+  padding: 1rem 1.5rem;
+  font-size: 1.5em;
+  font-weight: 600;
+  background: linear-gradient(#002060, #002060) padding-box,
+    linear-gradient(120deg, #68eaff, #fe00fe) border-box;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+button:disabled,
+button[disabled] {
+  filter: opacity(0.5);
+  cursor: default;
+}
+
+footer {
+  display: flex;
+  flex: 1;
+  padding: 1rem 0;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  font-size: 0.8em;
+}
+
+footer .logo {
+  height: 1em;
+  margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 375px) {
+  button {
+    padding: 0.7rem 1.3rem;
   }
 }

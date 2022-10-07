@@ -1,0 +1,36 @@
+.singleTopic {
+  padding: 0.3rem 0.5rem;
+  border-radius: 15px;
+  border: #fff 1px solid;
+  cursor: pointer;
+  margin: 0.3rem 0.15rem;
+  display: inline-block;
+  font-size: 0.95em;
+}
+
+.singleTopic.selected {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #68eaff;
+  color: #68eaff;
+}
+
+@media screen and (max-width: 390px) {
+  .singleTopic {
+    font-size: 0.9em;
+    padding: 0.3rem 0.4rem;
+    margin: 0.3rem 0.1rem;
+  }
+}
+@media screen and (max-width: 380px) {
+  .singleTopic {
+    font-size: 0.85em;
+    padding: 0.3rem 0.3rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  .singleTopic {
+    font-size: 0.7em;
+    padding: 0.3rem 0.4rem;
+    margin: 0.2rem 0.1rem;
+  }
+}
