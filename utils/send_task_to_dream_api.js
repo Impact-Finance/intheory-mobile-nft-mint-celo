@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import * as fs from 'fs';
 import DREAM_API_KEY from './DREAM_API_KEY';
 
 export default async function send_task_to_dream_api(
@@ -66,14 +65,6 @@ target_img_path is an optional path to an image to influence the generation.
         return false;
       } else if (state == 'completed') {
         let final_url = get_response.data.result;
-        //   axios({
-        //     method: 'get',
-        //     url: final_url,
-        //     responseType: 'stream',
-        //   }).then(function (response) {
-        //     response.data.pipe(fs.createWriteStream('img.jpg'));
-        //     console.log('Generated image downloaded to img.jpg! enjoy :)');
-        //   });
         return final_url;
       }
       await new Promise(res => setTimeout(res, 4000));
