@@ -12,10 +12,12 @@ function FormHandler(props) {
           <input
             type="text"
             name="topics"
+            readOnly
             value={props.topics}
           />
           <input
             name="form-name"
+            readOnly
             value="selected-topics"
           />
           <input name="bot-field" />
