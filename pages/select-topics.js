@@ -19,7 +19,8 @@ export default function SelectTopics() {
     setTopics(newTopics);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     global.update({
       submittedTopics: topics,
     });
@@ -50,11 +51,23 @@ export default function SelectTopics() {
         removeTopic={removeTopic}
       />
       <Link href="/generate-image">
-        <button
-          onClick={handleSubmit}
-          disabled={topics.length === 0 || topics.length > 3}>
-          Submit
-        </button>
+        <form
+          name="selected-topics"
+          method="POST"
+          data-netlify="true">
+          <input
+            type="text"
+            name="selected-topics"
+            value={topics}
+            hidden
+          />
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            disabled={topics.length === 0 || topics.length > 3}>
+            Submit
+          </button>
+        </form>
       </Link>
     </>
   );
