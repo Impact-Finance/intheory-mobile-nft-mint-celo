@@ -19,8 +19,7 @@ export default function SelectTopics() {
     setTopics(newTopics);
   };
 
-  const handleSubmit = e => {
-    // e.preventDefault();
+  const handleSubmit = () => {
     global.update({
       submittedTopics: topics,
     });
