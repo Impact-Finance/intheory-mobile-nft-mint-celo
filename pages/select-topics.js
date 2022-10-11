@@ -54,13 +54,16 @@ export default function SelectTopics() {
         <form
           name="selected-topics"
           method="POST"
-          data-netlify="true">
-          <input
-            type="text"
-            name="selected-topics"
-            value={topics}
-            hidden
-          />
+          data-netlify="true"
+          data-netlify-honeypot="bot-field">
+          <div hidden>
+            <input
+              type="text"
+              name="topics"
+              value={topics}
+            />
+            <input name="bot-field" />
+          </div>
           <button
             type="submit"
             onClick={handleSubmit}
