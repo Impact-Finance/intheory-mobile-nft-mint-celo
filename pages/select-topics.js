@@ -3,7 +3,7 @@ import styles from '../styles/Select.module.css';
 import TopicsBlock from '../components/TopicsBlock';
 import { useContext } from 'react';
 import GlobalContext from '../utils/global-context';
-import Link from 'next/link';
+import FormHandler from '../components/FormHandler';
 
 export default function SelectTopics() {
   const global = useContext(GlobalContext);
@@ -50,28 +50,10 @@ export default function SelectTopics() {
         addTopic={addTopic}
         removeTopic={removeTopic}
       />
-      <Link href="/generate-image">
-        <form
-          name="selected-topics"
-          method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field">
-          <div hidden>
-            <input
-              type="text"
-              name="topics"
-              value={topics}
-            />
-            <input name="bot-field" />
-          </div>
-          <button
-            type="submit"
-            onClick={handleSubmit}
-            disabled={topics.length === 0 || topics.length > 3}>
-            Submit
-          </button>
-        </form>
-      </Link>
+      <FormHandler
+        topics={topics}
+        handleSubmit={handleSubmit}
+      />
     </>
   );
 }
