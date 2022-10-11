@@ -1,10 +1,12 @@
-import axios from 'axios';
+const axios = require('axios');
 
-export default async function send_task_to_dream_api(
-  style_id = 1,
-  prompt = 'future science'
-) {
+exports.handler = async function (event, context) {
   try {
+    const { topics } = event.queryStringParameters;
+    console.log(topics);
+    const styleNumbers = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17, 19, 21];
+    const style_id =
+      styleNumbers[Math.floor(Math.random() * styleNumbers.length)];
     /**
 Send requests to the dream API.
 prompt is the text prompt.
@@ -39,7 +41,7 @@ target_img_path is an optional path to an image to influence the generation.
     const put_payload = {
       input_spec: {
         style: style_id, //integer corresponding to a style (mapping below)
-        prompt: prompt, //str - the text prompt for the image generation
+        prompt: topics, //str - the text prompt for the image generation
         target_image_weight: null, //Optional[float] - target image influence strength. defaults to 0.1.
         width: 960, //Optional[int] - the width of the image, defaults to 960
         height: 1568, //Optional[int] - the height of the image, defaults to 1568
@@ -61,14 +63,23 @@ target_img_path is an optional path to an image to influence the generation.
         continue;
       } else if (state == 'failed') {
         //   console.log('failed!');
-        return false;
+        return {
+          statusCode: 404,
+          body: JSON.stringify({ imgURL: false }),
+        };
       } else if (state == 'completed') {
         let final_url = get_response.data.result;
-        return final_url;
+        return {
+          statusCode: 200,
+          body: JSON.stringify({ imgURL: final_url }),
+        };
       }
-      await new Promise(res => setTimeout(res, 4000));
+      await new Promise(res => setTimeout(res, 1000));
     }
   } catch (e) {
-    return false;
+    return {
+      statusCode: 404,
+      body: JSON.stringify({ imgURL: false }),
+    };
   }
-}
+};

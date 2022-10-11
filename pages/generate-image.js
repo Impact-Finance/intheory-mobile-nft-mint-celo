@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from 'react';
 import styles from '../styles/GenerateImage.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import send_task_to_dream_api from '../utils/send_task_to_dream_api';
 
 export default function GenerateImage() {
   const global = useContext(GlobalContext);
@@ -14,20 +13,25 @@ export default function GenerateImage() {
   });
 
   useEffect(() => {
-    async function makeAPICall() {
-      const topicString = global.submittedTopics.join(' | ');
-      const styleNumbers = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17, 19, 21];
-      const imgStyle =
-        styleNumbers[Math.floor(Math.random() * styleNumbers.length)];
-      const imgURL = await send_task_to_dream_api(imgStyle, topicString);
-      global.update({
-        imageURL: imgURL,
-      });
-      !imgURL
-        ? setIsReturned({ isLoaded: true, isFailed: true })
-        : setIsReturned({ isLoaded: true, isFailed: false });
+    try {
+      async function makeAPICall() {
+        const topicString = global.submittedTopics.join('%20%7C%20');
+        const encodedTopicString = topicString.replace(' ', '%20');
+        const netlifyURL = `/.netlify/functions/dream-call?topics=${encodedTopicString}`;
+        const netlifyResponse = await fetch(netlifyURL).then(res => res.json());
+        global.update({
+          imageURL: netlifyResponse.imgURL,
+        });
+        !netlifyResponse.imgURL
+          ? setIsReturned({ isLoaded: true, isFailed: true })
+          : setIsReturned({ isLoaded: true, isFailed: false });
+      }
+      makeAPICall();
+    } catch (e) {
+      // console.log('Problem with netlify function');
+      // console.log(e);
+      setIsReturned({ isLoaded: true, isFailed: true });
     }
-    makeAPICall();
   }, []);
 
   return (
