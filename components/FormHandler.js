@@ -4,6 +4,7 @@ function FormHandler(props) {
   return (
     <Link href="/generate-image">
       <form
+        onSubmit={props.handleSubmit}
         name="selected-topics"
         method="POST"
         data-netlify="true"
@@ -26,7 +27,6 @@ function FormHandler(props) {
         />
         <button
           type="submit"
-          onClick={props.handleSubmit}
           disabled={props.topics.length === 0 || props.topics.length > 3}>
           Submit
         </button>
