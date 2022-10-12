@@ -8,20 +8,22 @@ function FormHandler(props) {
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field">
-        <div hidden>
-          <input
-            type="text"
-            name="topics"
-            readOnly
-            value={props.topics}
-          />
-          <input
-            name="form-name"
-            readOnly
-            value="selected-topics"
-          />
-          <input name="bot-field" />
-        </div>
+        <input
+          type="hidden"
+          name="form-name"
+          readOnly
+          value="selected-topics"
+        />
+        <input
+          type="hidden"
+          name="topics"
+          readOnly
+          value={props.topics}
+        />
+        <input
+          name="bot-field"
+          type="hidden"
+        />
         <button
           type="submit"
           onClick={props.handleSubmit}
