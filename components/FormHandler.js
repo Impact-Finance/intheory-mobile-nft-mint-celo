@@ -8,7 +8,7 @@ function FormHandler(props) {
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field">
-        <div hidden>
+        <div>
           <input
             type="text"
             name="topics"
