@@ -9,7 +9,8 @@ export default function HowTo() {
         <div className={styles.stepItem}>
           <span className={styles.numberIcon}>1</span>
           <p className={styles.stepDescription}>
-            Select the research topics that align with your interests.
+            Select the research topics that align with your interests. Your
+            selection helps decide the first projects funded by inTheory.
           </p>
         </div>
         <div className={styles.stepItem}>
@@ -22,7 +23,7 @@ export default function HowTo() {
         <div className={styles.stepItem}>
           <span className={styles.numberIcon}>3</span>
           <p className={styles.stepDescription}>
-            All holders of a pre-launch NFT will receive exclusive benefits when
+            All pre-launch NFT holders will receive exclusive benefits when
             inTheory launches in 2023.
           </p>
         </div>

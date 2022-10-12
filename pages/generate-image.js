@@ -18,18 +18,22 @@ export default function GenerateImage() {
         const topicString = global.submittedTopics.join('%20%7C%20');
         const encodedTopicString = topicString.replace(' ', '%20');
         const netlifyURL = `/.netlify/functions/dream-call?topics=${encodedTopicString}`;
-        const netlifyResponse = await fetch(netlifyURL).then(res => res.json());
-        global.update({
-          imageURL: netlifyResponse.imgURL,
-        });
-        !netlifyResponse.imgURL
-          ? setIsReturned({ isLoaded: true, isFailed: true })
-          : setIsReturned({ isLoaded: true, isFailed: false });
+        try {
+          const netlifyResponse = await fetch(netlifyURL).then(res =>
+            res.json()
+          );
+          global.update({
+            imageURL: netlifyResponse.imgURL,
+          });
+          !netlifyResponse.imgURL
+            ? setIsReturned({ isLoaded: true, isFailed: true })
+            : setIsReturned({ isLoaded: true, isFailed: false });
+        } catch {
+          setIsReturned({ isLoaded: true, isFailed: true });
+        }
       }
       makeAPICall();
-    } catch (e) {
-      // console.log('Problem with netlify function');
-      // console.log(e);
+    } catch {
       setIsReturned({ isLoaded: true, isFailed: true });
     }
   }, []);
