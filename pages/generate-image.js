@@ -24,6 +24,7 @@ export default function GenerateImage() {
           );
           global.update({
             imageURL: netlifyResponse.imgURL,
+            submittedTopics: global.submittedTopics,
           });
           !netlifyResponse.imgURL
             ? setIsReturned({ isLoaded: true, isFailed: true })
@@ -67,7 +68,7 @@ export default function GenerateImage() {
             </div>
             <div>
               <div>
-                <Link href="/">
+                <Link href="/mint-nft">
                   <button>Mint as NFT</button>
                 </Link>
               </div>
@@ -100,8 +101,26 @@ export default function GenerateImage() {
               <li></li>
               <li></li>
             </ul>
-            <h2>Generating image...</h2>
-            <p>This might take a minute</p>
+            <div>
+              <h2>Generating image...</h2>
+              <p>This should take less than 15 seconds</p>
+              {/* <div className="partner-ref">
+                <a
+                  href="https://www.wombo.art/"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Generated with
+                  <span className="logo">
+                    <Image
+                      src="/images/wombo.png"
+                      alt="WOMBO.ai Logo"
+                      width={70}
+                      height={18}
+                    />
+                  </span>
+                </a>
+              </div> */}
+            </div>
           </div>
         )}
       </div>
