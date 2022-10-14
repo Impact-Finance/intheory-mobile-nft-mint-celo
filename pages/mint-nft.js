@@ -16,7 +16,7 @@ function MintNFT() {
             NFT minted on Celo
             <span className="logo">
               <Image
-                src="/images/celo-logo.ico"
+                src="/images/celo-logo.png"
                 alt="Celo Logo"
                 width={18}
                 height={18}
