@@ -3,7 +3,6 @@ const axios = require('axios');
 exports.handler = async function (event, context) {
   try {
     const { topics } = event.queryStringParameters;
-    console.log(topics);
     const styleNumbers = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17, 19, 21];
     const style_id =
       styleNumbers[Math.floor(Math.random() * styleNumbers.length)];
