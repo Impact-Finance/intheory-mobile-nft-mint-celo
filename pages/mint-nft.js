@@ -28,7 +28,7 @@ function MintNFT() {
       </div>
       <div className="divider"></div>
       <div>
-        <h3>Don't have a web3 wallet yet?</h3>
+        <h3>Don&apos;t have a web3 wallet yet?</h3>
         <a
           href="https://valoraapp.com/"
           target="_blank"
