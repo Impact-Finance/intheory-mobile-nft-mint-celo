@@ -48,7 +48,6 @@ exports.handler = async function (event, context) {
           body: JSON.stringify({ imgURL: final_url }),
         };
       }
-      await new Promise(res => setTimeout(res, 1000));
     }
   } catch {
     return {
