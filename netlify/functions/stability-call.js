@@ -32,16 +32,18 @@ exports.handler = async function (event, context) {
         .get(getTarget, headers)
         .catch(e => console.log(e.response));
       let state = get_response.data.status;
-      if (state == 'processing' || 'starting') {
-        //   console.log('generating');
+      if (state == 'processing' || state == 'starting') {
+        console.log('generating');
+        await new Promise(res => setTimeout(res, 1000));
         continue;
       } else if (state == 'failed' || state == 'canceled') {
-        //   console.log('failed!');
+        console.log('failed!');
         return {
           statusCode: 404,
           body: JSON.stringify({ imgURL: false }),
         };
       } else if (state == 'succeeded') {
+        console.log('success!');
         let final_url = get_response.data.output;
         return {
           statusCode: 200,
