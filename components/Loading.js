@@ -12,7 +12,7 @@ function Loading() {
       </ul>
       <div>
         <h2>Generating image...</h2>
-        <p>This should take less than 15 seconds</p>
+        <p>This should take less than 30 seconds</p>
         {/* <div className="partner-ref">
             <a
               href="https://www.wombo.art/"

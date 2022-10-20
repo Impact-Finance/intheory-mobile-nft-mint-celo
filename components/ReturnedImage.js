@@ -2,14 +2,39 @@ import styles from '../styles/GenerateImage.module.css';
 import Link from 'next/link';
 import GlobalContext from '../utils/global-context';
 import { useContext } from 'react';
-import sendMetadata from '../utils/sendMetadata';
 
 function ReturnedImage() {
   const global = useContext(GlobalContext);
 
-  const handleMint = () => {
-    const { submittedTopics, imageURL } = global;
-    sendMetadata(submittedTopics, imageURL);
+  const handleMetadata = () => {
+    try {
+      async function streamToIPFS() {
+        const topicString = global.submittedTopics.join('%20%7C%20');
+        const encodedTopicString = topicString.replace(' ', '%20');
+        const encodedImgUrl = encodeURIComponent(global.imageURL);
+        const netlifyURL = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&s3url=${encodedImgUrl}`;
+        try {
+          const netlifyResponse = await fetch(netlifyURL).then(res =>
+            res.json()
+          );
+          global.update({
+            metadataCID: netlifyResponse.metadataCID,
+          });
+          console.log(netlifyResponse.metadataCID);
+        } catch {
+          // console.log('error with netlify IPFS stream function');
+          global.update({
+            metadataCID: false,
+          });
+        }
+      }
+      streamToIPFS();
+    } catch {
+      // console.log('error with netlify IPFS stream function (outer)');
+      global.update({
+        metadataCID: false,
+      });
+    }
   };
 
   return (
@@ -24,7 +49,7 @@ function ReturnedImage() {
       <div>
         <div>
           <Link href="/mint-nft">
-            <button onClick={handleMint}>Mint as NFT</button>
+            <button onClick={handleMetadata}>Mint as NFT</button>
           </Link>
         </div>
         <div

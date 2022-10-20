@@ -17,11 +17,24 @@ export default function GenerateImage() {
       async function makeAPICall() {
         const topicString = global.submittedTopics.join('%20%7C%20');
         const encodedTopicString = topicString.replace(' ', '%20');
-        const netlifyURL = `/.netlify/functions/dream-call?topics=${encodedTopicString}`;
+
+        //WOMBO DREAM API
+        // const netlifyURL = `/.netlify/functions/dream-call?topics=${encodedTopicString}`;
+
+        //STABLE DIFFUSION API
+        const netlifyURL = `/.netlify/functions/stability-call?topics=${encodedTopicString}`;
+
         try {
           const netlifyResponse = await fetch(netlifyURL).then(res =>
             res.json()
           );
+
+          // DUMMY RESPONSE FOR TESTING
+          // const netlifyResponse = {
+          //   imgURL:
+          //     'https://luan-wombo-paint.s3.amazonaws.com/generated/341468c3-b190-478b-823f-170c68be9ede/final.jpg?AWSAccessKeyId=AKIAWGXQXQ6WCOB7PP5J&Signature=O0jRWJ13R5jEy43%2F2%2BUABlh6YiU%3D&Expires=1666238761',
+          // };
+
           global.update({
             imageURL: netlifyResponse.imgURL,
             submittedTopics: global.submittedTopics,
@@ -42,7 +55,7 @@ export default function GenerateImage() {
   return (
     <div>
       {isReturned.isFailed ? (
-        <GenFailed />
+        <GenFailed actionString="Image generation" />
       ) : isReturned.isLoaded ? (
         <ReturnedImage />
       ) : (

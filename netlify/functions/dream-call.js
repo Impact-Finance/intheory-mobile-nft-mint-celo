@@ -7,11 +7,11 @@ exports.handler = async function (event, context) {
     const style_id =
       styleNumbers[Math.floor(Math.random() * styleNumbers.length)];
     /**
-Send requests to the dream API.
-prompt is the text prompt.
-style_id is which style to use (a mapping of ids to names is in the docs).
-target_img_path is an optional path to an image to influence the generation.
-*/
+    Send requests to the dream API.
+    prompt is the text prompt.
+    style_id is which style to use (a mapping of ids to names is in the docs).
+    target_img_path is an optional path to an image to influence the generation.
+    */
 
     const BASE_URL = 'https://api.luan.tools/api/tasks/';
 

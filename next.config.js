@@ -4,6 +4,10 @@ const nextConfig = {
   swcMinify: true,
   env: {
     DREAM_API_KEY: process.env.DREAM_API_KEY,
+    PINATA_API_KEY: process.env.PINATA_API_KEY,
+    PINATA_SECRET_API_KEY: process.env.PINATA_SECRET_API_KEY,
+    NFT_STORAGE_API_KEY: process.env.NFT_STORAGE_API_KEY,
+    REPLICATION_STABILITY_API_KEY: process.env.REPLICATION_STABILITY_API_KEY,
   },
 };
 

@@ -9,6 +9,7 @@ export default function MyApp({ Component, pageProps }) {
   const [state, setState] = useState({
     submittedTopics: [],
     imageURL: '',
+    metadataCID: '',
     update,
   });
 

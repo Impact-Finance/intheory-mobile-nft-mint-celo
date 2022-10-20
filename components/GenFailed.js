@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-function GenFailed() {
+function GenFailed(props) {
   return (
     <>
       <div style={{ marginBottom: '20%' }}>
@@ -11,7 +11,7 @@ function GenFailed() {
           width={200}
           height={200}
         />
-        <h3>Uh oh! Image generation failed!</h3>
+        <h3>Uh oh! {props.actionString} failed!</h3>
       </div>
       <Link href="/select-topics">
         <button>Try again</button>
