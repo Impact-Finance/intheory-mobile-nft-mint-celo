@@ -15,25 +15,25 @@ export default function GenerateImage() {
   useEffect(() => {
     try {
       async function makeAPICall() {
-        const topicString = global.submittedTopics.join('%20%7C%20');
+        const topicString = global.submittedTopics.join('%20');
         const encodedTopicString = topicString.replace(' ', '%20');
 
         //WOMBO DREAM API
         // const netlifyURL = `/.netlify/functions/dream-call?topics=${encodedTopicString}`;
 
         //STABLE DIFFUSION API
-        const netlifyURL = `/.netlify/functions/stability-call?topics=${encodedTopicString}`;
+        // const netlifyURL = `/.netlify/functions/stability-call?topics=${encodedTopicString}`;
 
         try {
-          const netlifyResponse = await fetch(netlifyURL).then(res =>
-            res.json()
-          );
+          // const netlifyResponse = await fetch(netlifyURL).then(res =>
+          //   res.json()
+          // );
 
           // DUMMY RESPONSE FOR TESTING
-          // const netlifyResponse = {
-          //   imgURL:
-          //     'https://luan-wombo-paint.s3.amazonaws.com/generated/341468c3-b190-478b-823f-170c68be9ede/final.jpg?AWSAccessKeyId=AKIAWGXQXQ6WCOB7PP5J&Signature=O0jRWJ13R5jEy43%2F2%2BUABlh6YiU%3D&Expires=1666238761',
-          // };
+          const netlifyResponse = {
+            imgURL:
+              'https://replicate.delivery/pbxt/YhJKP9lWTJKWKtN2u3n8NnKQ23BlTNztkLce5nRch08aY97HA/out-0.png',
+          };
 
           global.update({
             imageURL: netlifyResponse.imgURL,

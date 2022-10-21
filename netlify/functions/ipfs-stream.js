@@ -1,36 +1,41 @@
-// const axios = require('axios');
-const fetch = require('node-fetch');
-// var FormData = require('form-data');
-// var form = new FormData();
-var { NFTStorage } = require('nft.storage');
+// const fetch = require('node-fetch');
+const axios = require('axios');
+// const FormData = require('form-data');
+const fs = require('fs');
+// var data = new FormData();
+const { v4: uuid } = require('uuid');
 
 exports.handler = async function (event, context) {
-  //   try {
-  const { topics, s3url } = event.queryStringParameters;
-  const PINATA_API_KEY = process.env.PINATA_API_KEY;
-  const PINATA_SECRET_API_KEY = process.env.PINATA_SECRET_API_KEY;
-  const NFT_STORAGE_API_KEY = process.env.NFT_STORAGE_API_KEY;
-  const pinataUrl = 'https://api.pinata.cloud/pinning/pinFileToIPFS';
-  const imageCID = 'QmSE8qwZYCNWtPfh2Z5D24PKE1bFSp7LDVTdKTgc7GiGUf';
+  // try {
+  const { topics, imageUrl } = event.queryStringParameters;
 
-  const imageBlob = await fetch(s3url).then(function (response) {
-    return response.blob();
+  await axios({
+    method: 'get',
+    url: imageUrl,
+    responseType: 'stream',
+  }).then(response => {
+    response.data.pipe(
+      fs.createWriteStream(`public/images/NFTs/img-${uuid()}.png`)
+    );
+    console.log('image saved!');
   });
 
-  console.log(imageBlob);
+  // data.append('NFTimage.png', stream, {
+  //   filename: 'NFTimage.png',
+  // });
 
-  //   let blob = new Blob()
+  // var config = {
+  //   method: 'post',
+  //   url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
+  //   headers: {
+  //     Authorization: `Bearer ${process.env.PINATA_JWT}`,
+  //     ...data.getHeaders(),
+  //   },
+  //   data: data,
+  // };
 
-  //   const nft = {
-  //     image, // use image Blob as `image` field
-  //     name: 'inTheory Pre-Launch NFT',
-  //     description:
-  //       'This NFT verifies the holder as a supporter of decentralized science. All holders of an inTheory pre-launch NFT are entitled to exclusive benefits when inTheory launches in 2023.',
-  //     properties: {
-  //       creator: [{ name: 'Impact Finance' }],
-  //       researchTopics: topics,
-  //     },
-  //   };
+  // const res = await axios(config);
+  // console.log(res);
 
   return {
     statusCode: 200,
@@ -38,7 +43,7 @@ exports.handler = async function (event, context) {
       metadataCID: true,
     }),
   };
-  //   } catch {
+  // } catch {
   return {
     statusCode: 404,
     body: JSON.stringify({ metadataCID: false }),

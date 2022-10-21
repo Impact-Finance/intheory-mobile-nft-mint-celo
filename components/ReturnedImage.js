@@ -12,7 +12,7 @@ function ReturnedImage() {
         const topicString = global.submittedTopics.join('%20%7C%20');
         const encodedTopicString = topicString.replace(' ', '%20');
         const encodedImgUrl = encodeURIComponent(global.imageURL);
-        const netlifyURL = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&s3url=${encodedImgUrl}`;
+        const netlifyURL = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImgUrl}`;
         try {
           const netlifyResponse = await fetch(netlifyURL).then(res =>
             res.json()
@@ -22,7 +22,6 @@ function ReturnedImage() {
           });
           console.log(netlifyResponse.metadataCID);
         } catch {
-          // console.log('error with netlify IPFS stream function');
           global.update({
             metadataCID: false,
           });
@@ -30,7 +29,6 @@ function ReturnedImage() {
       }
       streamToIPFS();
     } catch {
-      // console.log('error with netlify IPFS stream function (outer)');
       global.update({
         metadataCID: false,
       });

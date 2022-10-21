@@ -1,13 +1,13 @@
 const settings = [
   'exploding volcano',
-  'dormant volcano',
   'outer space',
   'saturn',
   'event horizon',
-  'snowy mountains',
+  'mountain top',
   'laboratory',
   'spaceship',
-  'sand dunes',
+  // 'mars',
+  'moon',
   'underwater',
   'underground lair',
   'mechanical cave',
@@ -16,7 +16,7 @@ const settings = [
   'year 3000',
 ];
 const styles = [
-  'surreal',
+  'surrealist',
   'realistic',
   '3d graphic',
   'anime',
@@ -30,6 +30,7 @@ const styles = [
   'psychedelic',
   'retrofuturism',
   'synthwave',
+  'cinematic 4K',
 ];
 const colors = [
   'red',
@@ -43,6 +44,7 @@ const colors = [
   'black',
   'white',
   'rainbow',
+  'aurora',
 ];
 const adjectives = [
   'cloudy',
@@ -59,28 +61,29 @@ const adjectives = [
   'epic',
   'fantastic',
   'monumental',
-  'secretive',
+  'rule of thirds',
+  'atmospheric',
 ];
-const subjects = [
-  'robots',
-  'aliens',
-  'scientists',
-  'researchers',
-  'cyborgs',
-  'machines',
-];
-const ingVerbs = [
-  'discovering',
-  'advancing',
-  'finding',
-  'creating',
-  'building',
-  'destroying',
-  'studying',
-  'synthesizing',
-  'titrating',
-  'fabricating',
-];
+// const subjects = [
+//   'robots',
+//   'aliens',
+//   'scientists',
+//   'researchers',
+//   'cyborgs',
+//   'machines',
+// ];
+// const ingVerbs = [
+//   'discovering',
+//   'advancing',
+//   'finding',
+//   'creating',
+//   'building',
+//   'destroying',
+//   'studying',
+//   'synthesizing',
+//   'titrating',
+//   'fabricating',
+// ];
 
 function randomDescriptor(type) {
   if (type === 'setting') {
