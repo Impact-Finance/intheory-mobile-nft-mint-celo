@@ -1,6 +1,38 @@
 import Image from 'next/image';
+import GlobalContext from '../utils/global-context';
+import { useContext } from 'react';
 
 function MintNFT() {
+  const global = useContext(GlobalContext);
+
+  const handleMetadata = () => {
+    try {
+      async function streamToIPFS() {
+        const topicString = global.submittedTopics.join('%20%7C%20');
+        const encodedTopicString = topicString.replace(' ', '%20');
+        const encodedImgUrl = encodeURIComponent(global.imageURL);
+        const netlifyURL = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImgUrl}`;
+        try {
+          const netlifyResponse = await fetch(netlifyURL).then(res =>
+            res.json()
+          );
+          global.update({
+            metadataCID: netlifyResponse.metadataCID,
+          });
+        } catch {
+          global.update({
+            metadataCID: false,
+          });
+        }
+      }
+      streamToIPFS();
+    } catch {
+      global.update({
+        metadataCID: false,
+      });
+    }
+  };
+
   return (
     <>
       <h3>
@@ -9,22 +41,6 @@ function MintNFT() {
       </h3>
       <div>
         <button>Connect Wallet</button>
-        {/* <div className="partner-ref">
-          <a
-            href="https://celo.org/"
-            target="_blank"
-            rel="noopener noreferrer">
-            NFT minted on Celo
-            <span className="logo">
-              <Image
-                src="/images/celo-logo.png"
-                alt="Celo Logo"
-                width={18}
-                height={18}
-              />
-            </span>
-          </a>
-        </div> */}
       </div>
       <div className="divider"></div>
       <div>

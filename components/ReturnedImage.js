@@ -1,39 +1,7 @@
 import styles from '../styles/GenerateImage.module.css';
 import Link from 'next/link';
-import GlobalContext from '../utils/global-context';
-import { useContext } from 'react';
 
 function ReturnedImage() {
-  const global = useContext(GlobalContext);
-
-  const handleMetadata = () => {
-    try {
-      async function streamToIPFS() {
-        const topicString = global.submittedTopics.join('%20%7C%20');
-        const encodedTopicString = topicString.replace(' ', '%20');
-        const encodedImgUrl = encodeURIComponent(global.imageURL);
-        const netlifyURL = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImgUrl}`;
-        try {
-          const netlifyResponse = await fetch(netlifyURL).then(res =>
-            res.json()
-          );
-          global.update({
-            metadataCID: netlifyResponse.metadataCID,
-          });
-        } catch {
-          global.update({
-            metadataCID: false,
-          });
-        }
-      }
-      streamToIPFS();
-    } catch {
-      global.update({
-        metadataCID: false,
-      });
-    }
-  };
-
   return (
     <>
       <div>
@@ -46,11 +14,7 @@ function ReturnedImage() {
       <div>
         <div>
           <Link href="/mint-nft">
-            <button
-              className="gradient-border"
-              onClick={handleMetadata}>
-              Mint as NFT
-            </button>
+            <button className="gradient-border">Mint as NFT</button>
           </Link>
         </div>
         <div
