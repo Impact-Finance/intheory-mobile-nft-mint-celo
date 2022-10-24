@@ -57,7 +57,7 @@ export default function GenerateImage() {
       {isReturned.isFailed ? (
         <GenFailed actionString="Image generation" />
       ) : isReturned.isLoaded ? (
-        <ReturnedImage />
+        <ReturnedImage imageURL={global.imageURL} />
       ) : (
         <Loading />
       )}
