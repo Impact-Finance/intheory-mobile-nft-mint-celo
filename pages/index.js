@@ -16,7 +16,7 @@ export default function Home() {
         </p>
       </div>
       <Link href="/how-it-works">
-        <button>Start →</button>
+        <button className="gradient-border">Start →</button>
       </Link>
     </>
   );

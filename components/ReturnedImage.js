@@ -46,7 +46,11 @@ function ReturnedImage() {
       <div>
         <div>
           <Link href="/mint-nft">
-            <button onClick={handleMetadata}>Mint as NFT</button>
+            <button
+              className="gradient-border"
+              onClick={handleMetadata}>
+              Mint as NFT
+            </button>
           </Link>
         </div>
         <div
