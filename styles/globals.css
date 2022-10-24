@@ -81,7 +81,7 @@ button {
   background: linear-gradient(rgba(0, 32, 96, 0.8), rgba(0, 32, 96, 1))
       padding-box,
     linear-gradient(120deg, #68eaff, #fe00fe) border-box;
-  border: 1px solid #002060;
+  border: 1px solid rgba(0, 32, 96, 0.8);
   border-radius: 10px;
   width: fit-content;
   cursor: pointer;
@@ -146,8 +146,13 @@ footer .logo,
     #68eaff,
     #fe00fe,
     #002060,
+    #fe00fe,
+    #68eaff,
     #8994ef,
-    #7f34d2
+    #fe00fe,
+    #68eaff,
+    #7f34d2,
+    #fe00fe
   );
   border-radius: 10px;
   z-index: -1;
