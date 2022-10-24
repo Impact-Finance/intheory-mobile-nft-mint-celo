@@ -5,8 +5,11 @@ const nextConfig = {
   env: {
     DREAM_API_KEY: process.env.DREAM_API_KEY,
     REPLICATION_STABILITY_API_KEY: process.env.REPLICATION_STABILITY_API_KEY,
-    NFT_STORAGE_API_KEY: process.env.NFT_STORAGE_API_KEY,
     PINATA_JWT: process.env.PINATA_JWT,
+    s3AccessKeyId: process.env.s3AccessKeyId,
+    s3AccessSecret: process.env.s3AccessSecret,
+    s3Region: process.env.s3Region,
+    s3Bucket: process.env.s3Bucket,
   },
 };
 

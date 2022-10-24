@@ -22,18 +22,18 @@ export default function GenerateImage() {
         // const netlifyURL = `/.netlify/functions/dream-call?topics=${encodedTopicString}`;
 
         //STABLE DIFFUSION API
-        // const netlifyURL = `/.netlify/functions/stability-call?topics=${encodedTopicString}`;
+        const netlifyURL = `/.netlify/functions/stability-call?topics=${encodedTopicString}`;
 
         try {
-          // const netlifyResponse = await fetch(netlifyURL).then(res =>
-          //   res.json()
-          // );
+          const netlifyResponse = await fetch(netlifyURL).then(res =>
+            res.json()
+          );
 
           // DUMMY RESPONSE FOR TESTING
-          const netlifyResponse = {
-            imgURL:
-              'https://replicate.delivery/pbxt/YhJKP9lWTJKWKtN2u3n8NnKQ23BlTNztkLce5nRch08aY97HA/out-0.png',
-          };
+          // const netlifyResponse = {
+          //   imgURL:
+          //     'https://replicate.delivery/pbxt/YhJKP9lWTJKWKtN2u3n8NnKQ23BlTNztkLce5nRch08aY97HA/out-0.png',
+          // };
 
           global.update({
             imageURL: netlifyResponse.imgURL,

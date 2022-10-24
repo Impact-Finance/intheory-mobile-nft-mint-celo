@@ -12,7 +12,7 @@ export default function Home() {
         </h1>
         <p style={{ fontSize: '1.4em' }}>
           Mint your free research-inspired NFT artwork to show your support for
-          open science.
+          decentralized science.
         </p>
       </div>
       <Link href="/how-it-works">

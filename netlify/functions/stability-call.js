@@ -1,7 +1,10 @@
 const axios = require('axios');
 const randomDescriptor = require('../../utils/randDescriptor');
 
-exports.handler = async function (event, context) {
+// This function generates an image using the topics selected by calling the Stable Diffusion model through the Replicate API.
+// The output is the remote url to the generated image.
+
+exports.handler = async function callStability(event, context) {
   try {
     const { topics } = event.queryStringParameters;
     const prompt = `${topics} in ${randomDescriptor(

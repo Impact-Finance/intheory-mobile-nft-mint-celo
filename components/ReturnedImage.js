@@ -20,7 +20,6 @@ function ReturnedImage() {
           global.update({
             metadataCID: netlifyResponse.metadataCID,
           });
-          console.log(netlifyResponse.metadataCID);
         } catch {
           global.update({
             metadataCID: false,

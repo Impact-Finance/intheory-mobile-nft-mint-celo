@@ -1,6 +1,9 @@
 const axios = require('axios');
 
-exports.handler = async function (event, context) {
+// This function generates an image using the topics selected by calling the WOMBO Dream API.
+// The output is the remote url to the generated image.
+
+exports.handler = async function callDream(event, context) {
   try {
     const { topics } = event.queryStringParameters;
     const styleNumbers = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 17, 19, 21];

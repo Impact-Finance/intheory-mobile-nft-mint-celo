@@ -28,7 +28,13 @@ function MintNFT() {
       </div>
       <div className="divider"></div>
       <div>
-        <h3>Don&apos;t have a web3 wallet yet?</h3>
+        <h3>Don&apos;t have a web3 wallet?</h3>
+        <p>
+          Create one with Valora using just your phone number, and then come
+          back here to mint your inTheory NFT.
+        </p>
+      </div>
+      <div>
         <a
           href="https://valoraapp.com/"
           target="_blank"
@@ -37,14 +43,10 @@ function MintNFT() {
             <Image
               src="/images/valora.png"
               alt="Valora Logo"
-              width={60}
+              width={182}
               height={60}
             />
           </span>
-          <p>
-            Create one with Valora using just your phone number, and then come
-            back here to mint your inTheory NFT.
-          </p>
         </a>
       </div>
     </>
