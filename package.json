@@ -16,6 +16,7 @@
     "nft.storage": "^7.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-meta-tags": "^1.0.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
