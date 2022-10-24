@@ -1,7 +1,11 @@
 import styles from '../styles/GenerateImage.module.css';
 import Link from 'next/link';
+import GlobalContext from '../utils/global-context';
+import { useContext } from 'react';
 
 function ReturnedImage() {
+  const global = useContext(GlobalContext);
+
   return (
     <>
       <div>

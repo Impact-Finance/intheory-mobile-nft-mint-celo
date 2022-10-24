@@ -20,7 +20,7 @@ const styles = [
   'realistic',
   '3d graphic',
   'anime',
-  'pixel art',
+  // 'pixel art',
   'isometric',
   'abstract',
   'cartoon',
