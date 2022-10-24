@@ -4,6 +4,7 @@ function FormHandler(props) {
   return (
     <Link href="/generate-image">
       <button
+        className="main-button"
         onClick={props.handleSubmit}
         disabled={props.topics.length === 0 || props.topics.length > 3}>
         Submit

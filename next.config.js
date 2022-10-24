@@ -11,6 +11,17 @@ const nextConfig = {
     s3Region: process.env.s3Region,
     s3Bucket: process.env.s3Bucket,
   },
+  future: {
+    webpack5: true,
+  },
+  webpack: config => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+    };
+    return config;
+  },
 };
 
 module.exports = nextConfig;

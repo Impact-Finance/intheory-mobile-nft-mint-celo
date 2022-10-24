@@ -29,7 +29,7 @@ export default function HowTo() {
         </div>
       </div>
       <Link href="/select-topics">
-        <button>Let&apos;s go!</button>
+        <button className="main-button">Let&apos;s go!</button>
       </Link>
     </>
   );

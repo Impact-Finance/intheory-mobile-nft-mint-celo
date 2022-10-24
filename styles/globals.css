@@ -72,7 +72,7 @@ ul {
   align-items: center;
 }
 
-button {
+button.main-button {
   color: #68eaff;
   padding: 1rem 1.5rem;
   font-size: 1.5em;
@@ -85,15 +85,15 @@ button {
   box-shadow: 0px 0px 5px #68eaff;
 }
 
-button:disabled,
-button[disabled] {
+button.main-button:disabled,
+button.main-button[disabled] {
   filter: opacity(0.5);
   cursor: default;
   box-shadow: none;
   border: 1px solid #002060;
 }
 
-button.gradient-border {
+button.main-button.gradient-border {
   background: linear-gradient(rgba(0, 32, 96, 0.8), rgba(0, 32, 96, 1))
       padding-box,
     linear-gradient(120deg, #68eaff, #fe00fe) border-box;

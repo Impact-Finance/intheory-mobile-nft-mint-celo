@@ -14,7 +14,7 @@ function ReturnedImage(props) {
       <div>
         <div>
           <Link href="/mint-nft">
-            <button className="gradient-border">Mint as NFT</button>
+            <button className="gradient-border main-button">Mint as NFT</button>
           </Link>
         </div>
         <div
