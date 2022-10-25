@@ -25,19 +25,19 @@ export default function GenerateImage() {
         const netlifyURL = `/.netlify/functions/stability-call?topics=${encodedTopicString}`;
 
         try {
-          // const netlifyResponse = await fetch(netlifyURL).then(res =>
-          //   res.json()
-          // );
+          const netlifyResponse = await fetch(netlifyURL).then(res =>
+            res.json()
+          );
 
           // DUMMY RESPONSE FOR TESTING
-          const netlifyResponse = {
-            imgURL:
-              'https://replicate.delivery/pbxt/YhJKP9lWTJKWKtN2u3n8NnKQ23BlTNztkLce5nRch08aY97HA/out-0.png',
-          };
+          // const netlifyResponse = {
+          //   imgURL:
+          //     'https://replicate.delivery/pbxt/YhJKP9lWTJKWKtN2u3n8NnKQ23BlTNztkLce5nRch08aY97HA/out-0.png',
+          // };
 
           global.update({
+            ...global,
             imageURL: netlifyResponse.imgURL,
-            submittedTopics: global.submittedTopics,
           });
           !netlifyResponse.imgURL
             ? setIsReturned({ isLoaded: true, isFailed: true })
@@ -59,7 +59,10 @@ export default function GenerateImage() {
       ) : isReturned.isLoaded ? (
         <ReturnedImage imageURL={global.imageURL} />
       ) : (
-        <Loading />
+        <Loading
+          action="Generating image..."
+          message="This should take less than 30 seconds"
+        />
       )}
     </div>
   );

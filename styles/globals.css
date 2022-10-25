@@ -125,7 +125,8 @@ footer .logo,
 
 @media screen and (max-width: 375px) {
   button {
-    padding: 0.7rem 1.3rem;
+    padding: 0.7rem 1.3rem !important;
+    font-size: 1.2em !important;
   }
 }
 

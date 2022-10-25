@@ -21,6 +21,7 @@ export default function SelectTopics() {
 
   const handleSubmit = () => {
     global.update({
+      ...global,
       submittedTopics: topics,
     });
   };

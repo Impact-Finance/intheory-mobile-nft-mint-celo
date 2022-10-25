@@ -3,14 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import GlobalContext from '../utils/global-context';
-import { CeloProvider } from '@celo/react-celo';
-import '../styles/react-celo.css';
+import { CeloProvider, Alfajores, NetworkNames } from '@celo/react-celo';
+import '@celo/react-celo/lib/styles.css';
 import '../styles/globals.css';
 
 export default function MyApp({ Component, pageProps }) {
   const [state, setState] = useState({
     submittedTopics: [],
     imageURL: '',
+    txnID: '',
     metadataCID: '',
     update,
   });
@@ -34,8 +35,8 @@ export default function MyApp({ Component, pageProps }) {
           text: '#ffffff',
           textSecondary: '#ffffff',
           textTertiary: '#ffffff',
-          muted: 'rgba(104, 234, 255, 0.5)',
-          background: '#002060',
+          muted: '#68eaffa5',
+          background: '#002060a6',
           error: '#fe00fe',
         }}
         connectModal={{

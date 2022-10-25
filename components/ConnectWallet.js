@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import { useCelo } from '@celo/react-celo';
 
-function ConnectWallet() {
-  const { connect, address } = useCelo();
+function ConnectWallet(props) {
   return (
     <>
       <h3>
@@ -11,7 +9,7 @@ function ConnectWallet() {
       </h3>
       <div>
         <button
-          onClick={connect}
+          onClick={props.connect}
           className="main-button">
           Connect Wallet
         </button>

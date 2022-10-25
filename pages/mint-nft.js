@@ -1,39 +1,19 @@
-import GlobalContext from '../utils/global-context';
-import { useContext } from 'react';
+import { useCelo } from '@celo/react-celo';
 import ConnectWallet from '../components/ConnectWallet';
+import ConnectedAccount from '../components/ConnectedAccount';
 
 function MintNFT() {
-  const global = useContext(GlobalContext);
+  const { connect, address } = useCelo();
 
-  const handleMetadata = () => {
-    try {
-      async function streamToIPFS() {
-        const topicString = global.submittedTopics.join('%20%7C%20');
-        const encodedTopicString = topicString.replace(' ', '%20');
-        const encodedImgUrl = encodeURIComponent(global.imageURL);
-        const netlifyURL = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImgUrl}`;
-        try {
-          const netlifyResponse = await fetch(netlifyURL).then(res =>
-            res.json()
-          );
-          global.update({
-            metadataCID: netlifyResponse.metadataCID,
-          });
-        } catch {
-          global.update({
-            metadataCID: false,
-          });
-        }
-      }
-      streamToIPFS();
-    } catch {
-      global.update({
-        metadataCID: false,
-      });
-    }
-  };
-
-  return <ConnectWallet />;
+  return (
+    <>
+      {!address ? (
+        <ConnectWallet connect={connect} />
+      ) : (
+        <ConnectedAccount address={address} />
+      )}
+    </>
+  );
 }
 
 export default MintNFT;

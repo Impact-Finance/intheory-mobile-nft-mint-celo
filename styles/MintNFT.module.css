@@ -1,0 +1,38 @@
+.address {
+  background: linear-gradient(rgba(0, 32, 96, 0.7), rgba(0, 32, 96, 1));
+  padding: 5px 10px;
+  line-height: 2.5rem;
+  border-radius: 8px;
+  color: #68eaff;
+}
+
+.disclaimer {
+  font-size: 0.9rem;
+  filter: opacity(0.8);
+}
+
+.detailContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.socialIcon {
+  padding: 0px 15px;
+  cursor: pointer;
+}
+
+.copy {
+  color: #68eaff;
+  filter: opacity(1);
+  font-weight: 700;
+}
+
+@media screen and (max-width: 360px) {
+  .success {
+    font-size: 1rem;
+  }
+  .thanks {
+    font-size: 0.9rem;
+  }
+}

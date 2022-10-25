@@ -1,6 +1,6 @@
 import styles from '../styles/GenerateImage.module.css';
 
-function Loading() {
+function Loading(props) {
   return (
     <div className={styles.sectionLoading}>
       <ul className={styles.listBars}>
@@ -11,8 +11,8 @@ function Loading() {
         <li></li>
       </ul>
       <div>
-        <h2>Generating image...</h2>
-        <p>This should take less than 30 seconds</p>
+        <h2>{props.action}</h2>
+        <p>{props.message}</p>
         {/* <div className="partner-ref">
             <a
               href="https://www.wombo.art/"
