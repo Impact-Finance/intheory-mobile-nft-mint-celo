@@ -1,6 +1,4 @@
-https://img.shields.io/github/license/Impact-Finance/intheory-mobile-nft-mint-celo
-https://img.shields.io/github/forks/Impact-Finance/intheory-mobile-nft-mint-celo
-https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDeSci_Impact
+[![GitHub license](https://img.shields.io/github/license/Impact-Finance/intheory-mobile-nft-mint-celo)](https://github.com/Impact-Finance/intheory-mobile-nft-mint-celo/blob/main/LICENSE) [![GitHub forks](https://img.shields.io/github/forks/Impact-Finance/intheory-mobile-nft-mint-celo)](https://github.com/Impact-Finance/intheory-mobile-nft-mint-celo/network) [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDeSci_Impact)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FImpact-Finance%2Fintheory-mobile-nft-mint-celo)
 
 # inTheory Pre-Launch NFT Minting App
 
