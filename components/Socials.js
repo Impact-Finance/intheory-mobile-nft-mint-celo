@@ -14,8 +14,8 @@ function Socials() {
               <Image
                 src="/images/twitter.svg"
                 alt="twitter"
-                width={35}
-                height={35}
+                width={30}
+                height={30}
               />
             </div>
           </a>
@@ -27,8 +27,8 @@ function Socials() {
               <Image
                 src="/images/linkedin.svg"
                 alt="linkedin"
-                width={35}
-                height={35}
+                width={30}
+                height={30}
               />
             </div>
           </a>
@@ -40,8 +40,8 @@ function Socials() {
               <Image
                 src="/images/medium.svg"
                 alt="medium"
-                width={35}
-                height={35}
+                width={30}
+                height={30}
               />
             </div>
           </a>

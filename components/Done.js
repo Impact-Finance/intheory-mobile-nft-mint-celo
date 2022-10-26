@@ -6,20 +6,21 @@ import JSConfetti from 'js-confetti';
 
 function Done(props) {
   const [isCopied, setIsCopied] = useState({ address: false, txnID: false });
-  const abbvMetadataCID =
-    props.metadataCID.substring(0, 3) +
+  const contractAddress = process.env.contractAddress;
+  const abbvContractAddress =
+    contractAddress.substring(0, 2) +
     '......' +
-    props.metadataCID.substring(
-      props.metadataCID.length - 5,
-      props.metadataCID.length
+    contractAddress.substring(
+      contractAddress.length - 5,
+      contractAddress.length
     );
   const abbvTxnID =
-    props.txnID.substring(0, 3) +
+    props.txnID.substring(0, 2) +
     '......' +
     props.txnID.substring(props.txnID.length - 5, props.txnID.length);
 
   const copyAddress = () => {
-    navigator.clipboard.writeText(props.metadataCID);
+    navigator.clipboard.writeText(contractAddress);
     setIsCopied({ address: true });
   };
   const copyTxn = () => {
@@ -31,7 +32,7 @@ function Done(props) {
     const jsConfetti = new JSConfetti();
     jsConfetti.addConfetti({
       emojis: ['🧬', '🪐', '🔭', '🧪', '🔬', '💫'],
-      emojiSize: 60,
+      emojiSize: 80,
       confettiNumber: 25,
     });
     jsConfetti.addConfetti({
@@ -53,15 +54,23 @@ function Done(props) {
           rel="noopener noreferrer">
           <button className="main-button">View NFT</button>
         </a>
+        <br />
+        <a
+          className={styles.metalink}
+          href={`https://impact-finance.mypinata.cloud/ipfs/${props.metadataCID}`}
+          target="_blank"
+          rel="noopener noreferrer">
+          View metadata
+        </a>
         <div className={styles.detailContainer}>
           <p className={styles.disclaimer}>
-            Metadata CID:
+            Contract address:
             <br />
             <span
               className={styles.address}
               onClick={copyAddress}
               style={{ cursor: 'pointer' }}>
-              {abbvMetadataCID}{' '}
+              {abbvContractAddress}{' '}
               <span className="logo">
                 <Image
                   src="/images/copy.svg"
@@ -105,7 +114,7 @@ function Done(props) {
         </div>
         <p className={styles.thanks}>
           Thank you for showing your support for decentralized science. Keep an
-          eye on our socials for development updates!
+          eye on our socials for development updates and perks for NFT holders!
         </p>
       </div>
       <Socials />

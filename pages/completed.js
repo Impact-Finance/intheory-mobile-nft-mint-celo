@@ -19,37 +19,54 @@ export default function Completed() {
 
   useEffect(() => {
     try {
-      async function IPFSstream() {
-        const topicString = global.submittedTopics.join('%20');
+      const saveAndMint = async () => {
+        const topicString = global.submittedTopics.join('%2C%20');
         const encodedTopicString = topicString.replace(' ', '%20');
         const imageURL = global.imageURL;
         const encodedImageURL = encodeURIComponent(imageURL);
 
-        const netlifyURL = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImageURL}`;
+        const netlifyIPFSUrl = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImageURL}&wallet=${address}`;
 
         try {
-          const netlifyResponse = await fetch(netlifyURL).then(res =>
+          const netlifyIPFSResponse = await fetch(netlifyIPFSUrl).then(res =>
             res.json()
           );
-          const txnID = netlifyResponse.metadataCID;
-          const metadataCID = netlifyResponse.metadataCID;
-          const netlifyResponseBadAddress = false; //edit when response is real
-          if (netlifyResponseBadAddress === true) {
-            setBadAddress(true);
-          }
+
+          const metadataCID = netlifyIPFSResponse.metadataCID;
+          setBadAddress(netlifyIPFSResponse.badAddress);
           global.update({
             ...global,
-            txnID: txnID,
             metadataCID: metadataCID,
           });
-          !netlifyResponse.metadataCID
+          !netlifyIPFSResponse.metadataCID
             ? setIsReturned({ isLoaded: true, isFailed: true })
             : setIsReturned({ isLoaded: true, isFailed: false });
+          if (netlifyIPFSResponse.badAddress === false) {
+            console.log('ADDRESS GOOD, MINTING NFT');
+            const metadataCID = global.metadataCID;
+            console.log(`Meatadata CID: ${metadataCID}`);
+            const netlifyMintUrl = `/.netlify/functions/tatum-mint?metadataCID=${metadataCID}&wallet=${address}`;
+            try {
+              const netlifyMintResponse = await fetch(netlifyMintUrl).then(
+                res => res.json()
+              );
+              const txnID = netlifyMintResponse.txnID;
+              global.update({
+                ...global,
+                txnID: txnID,
+              });
+              !netlifyMintResponse.txnID
+                ? setIsReturned({ isLoaded: true, isFailed: true })
+                : setIsReturned({ isLoaded: true, isFailed: false });
+            } catch {
+              setIsReturned({ isLoaded: true, isFailed: true });
+            }
+          }
         } catch {
           setIsReturned({ isLoaded: true, isFailed: true });
         }
-      }
-      IPFSstream();
+      };
+      saveAndMint();
     } catch {
       setIsReturned({ isLoaded: true, isFailed: true });
     }

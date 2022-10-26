@@ -7,7 +7,7 @@ const randomDescriptor = require('../../utils/randDescriptor');
 exports.handler = async function callStability(event, context) {
   try {
     const { topics } = event.queryStringParameters;
-    const prompt = `${topics} in ${randomDescriptor(
+    const prompt = `${topics}, ${randomDescriptor(
       'setting'
     )}, ${randomDescriptor('adjective')}, ${randomDescriptor(
       'color'

@@ -6,6 +6,12 @@
   color: #68eaff;
 }
 
+.metalink {
+  color: #68eaff;
+  font-weight: 600;
+  line-height: 3rem;
+}
+
 .disclaimer {
   font-size: 0.9rem;
   filter: opacity(0.8);
@@ -15,6 +21,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  height: fit-content;
 }
 
 .socialIcon {
@@ -34,5 +41,8 @@
   }
   .thanks {
     font-size: 0.9rem;
+  }
+  .metalink {
+    display: none;
   }
 }

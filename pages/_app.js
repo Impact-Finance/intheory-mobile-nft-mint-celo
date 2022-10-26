@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import GlobalContext from '../utils/global-context';
-import { CeloProvider, Alfajores, NetworkNames } from '@celo/react-celo';
+import { CeloProvider, NetworkNames } from '@celo/react-celo';
 import '@celo/react-celo/lib/styles.css';
 import '../styles/globals.css';
 
@@ -23,6 +23,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <CeloProvider
+        defaultNetwork={NetworkNames.Alfajores}
         dapp={{
           name: 'inTheory Pre-Launch NFT Mint',
           description:

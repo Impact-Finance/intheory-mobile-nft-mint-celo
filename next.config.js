@@ -10,6 +10,8 @@ const nextConfig = {
     s3AccessSecret: process.env.s3AccessSecret,
     s3Region: process.env.s3Region,
     s3Bucket: process.env.s3Bucket,
+    TATUM_API_KEY: process.env.TATUM_API_KEY,
+    contractAddress: process.env.contractAddress,
   },
   future: {
     webpack5: true,
