@@ -119,7 +119,35 @@ function Done(props) {
           eye on our socials for development updates and perks for NFT holders!
         </p>
       </div>
-      <Socials />
+      <div className={styles.tweetBox}>
+        <a
+          className={styles.tweet}
+          href="https://ctt.ac/0Wrn2"
+          target="_blank"
+          rel="noopener noreferrer">
+          <Image
+            src="/images/twitter.svg"
+            alt="copy"
+            width={17}
+            height={17}
+          />{' '}
+          Share
+        </a>
+        <a
+          className={styles.tweet}
+          href="https://twitter.com/DeSci_Impact"
+          target="_blank"
+          rel="noopener noreferrer">
+          <Image
+            src="/images/twitter.svg"
+            alt="copy"
+            width={17}
+            height={17}
+          />{' '}
+          Follow
+        </a>
+      </div>
+      {/* <Socials /> */}
     </>
   );
 }
