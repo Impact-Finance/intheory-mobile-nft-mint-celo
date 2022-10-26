@@ -23,7 +23,6 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <CeloProvider
-        defaultNetwork={NetworkNames.Alfajores}
         dapp={{
           name: 'inTheory Pre-Launch NFT Mint',
           description:
