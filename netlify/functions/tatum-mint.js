@@ -8,7 +8,7 @@ exports.handler = async function tatumMint(event, context) {
 
     const chain = 'CELO';
     const contractAddress = process.env.contractAddress;
-    const minter = '0xBC2eBA680EE50d685cc4Fe65f102AA70AfB27D3F';
+    const minter = '0x49678AAB11E001eb3cB2cBD9aA96b36DC2461A94';
     const metaUrl = `ipfs://${metadataCID}`;
 
     // const tokenId = Date.now();

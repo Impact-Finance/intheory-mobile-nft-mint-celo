@@ -34,6 +34,7 @@ const styles = [
   'retrofuturism',
   'synthwave',
   'cinematic 4K',
+  'prismatic',
 ];
 const colors = [
   'red',
