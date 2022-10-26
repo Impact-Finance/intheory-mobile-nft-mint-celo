@@ -1,3 +1,7 @@
+https://img.shields.io/github/license/Impact-Finance/intheory-mobile-nft-mint-celo
+https://img.shields.io/github/forks/Impact-Finance/intheory-mobile-nft-mint-celo
+https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDeSci_Impact
+
 # inTheory Pre-Launch NFT Minting App
 
 #### Built by [Impact Finance](https://impact-finance.io)
