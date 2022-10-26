@@ -29,16 +29,18 @@ function Done(props) {
   };
 
   useEffect(() => {
-    const jsConfetti = new JSConfetti();
-    jsConfetti.addConfetti({
-      emojis: ['🧬', '🪐', '🔭', '🧪', '🔬', '💫'],
-      emojiSize: 80,
-      confettiNumber: 25,
-    });
-    jsConfetti.addConfetti({
-      confettiColors: ['#68eaff', '#fe00fe', '#002060'],
-      confettiNumber: 350,
-    });
+    setTimeout(() => {
+      const jsConfetti = new JSConfetti();
+      jsConfetti.addConfetti({
+        emojis: ['🧬', '🪐', '🔭', '🧪', '🔬', '💫'],
+        emojiSize: 80,
+        confettiNumber: 25,
+      });
+      jsConfetti.addConfetti({
+        confettiColors: ['#68eaff', '#fe00fe', '#002060'],
+        confettiNumber: 350,
+      });
+    }, 500);
   }, []);
 
   return (
