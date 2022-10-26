@@ -60,7 +60,7 @@ exports.handler = async function tatumMint(event, context) {
   } catch {
     return {
       statusCode: 404,
-      body: JSON.stringify({ txnID: false }),
+      body: JSON.stringify({ txnID: '' }),
     };
   }
 };
