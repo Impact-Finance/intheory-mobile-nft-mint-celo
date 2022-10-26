@@ -29,12 +29,6 @@ export default function GenerateImage() {
             res.json()
           );
 
-          // DUMMY RESPONSE FOR TESTING
-          // const netlifyResponse = {
-          //   imgURL:
-          //     'https://replicate.delivery/pbxt/YhJKP9lWTJKWKtN2u3n8NnKQ23BlTNztkLce5nRch08aY97HA/out-0.png',
-          // };
-
           global.update({
             ...global,
             imageURL: netlifyResponse.imgURL,
