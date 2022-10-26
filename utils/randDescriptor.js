@@ -14,7 +14,7 @@ const settings = [
   'utopia',
   'dystopia',
   'year 3000',
-  'block hole',
+  'black hole',
   'supernova',
   'nebula',
 ];

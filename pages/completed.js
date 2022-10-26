@@ -15,7 +15,7 @@ export default function Completed() {
     isFailed: false,
   });
 
-  const [badAddress, setBadAddress] = useState(false);
+  const [badAddress, setBadAddress] = useState();
 
   useEffect(() => {
     try {
@@ -27,48 +27,39 @@ export default function Completed() {
 
         const netlifyIPFSUrl = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImageURL}&wallet=${address}`;
 
-        try {
-          const netlifyIPFSResponse = await fetch(netlifyIPFSUrl).then(res =>
+        const netlifyIPFSResponse = await fetch(netlifyIPFSUrl).then(res =>
+          res.json()
+        );
+
+        const metadataCID = netlifyIPFSResponse.metadataCID;
+        setBadAddress(netlifyIPFSResponse.badAddress);
+        global.update({
+          ...global,
+          metadataCID: metadataCID,
+        });
+        !netlifyIPFSResponse.metadataCID &&
+          setIsReturned({ ...isReturned, isFailed: true });
+        if (netlifyIPFSResponse.badAddress === false) {
+          console.log('ADDRESS GOOD, MINTING NFT');
+          console.log(`Metadata CID: ${metadataCID}`);
+          const netlifyMintUrl = `/.netlify/functions/tatum-mint?metadataCID=${metadataCID}&wallet=${address}`;
+          const netlifyMintResponse = await fetch(netlifyMintUrl).then(res =>
             res.json()
           );
-
-          const metadataCID = netlifyIPFSResponse.metadataCID;
-          setBadAddress(netlifyIPFSResponse.badAddress);
+          const txnID = netlifyMintResponse.txnID;
           global.update({
             ...global,
+            txnID: txnID,
             metadataCID: metadataCID,
           });
-          !netlifyIPFSResponse.metadataCID
-            ? setIsReturned({ isLoaded: true, isFailed: true })
-            : setIsReturned({ isLoaded: true, isFailed: false });
-          if (netlifyIPFSResponse.badAddress === false) {
-            console.log('ADDRESS GOOD, MINTING NFT');
-            const metadataCID = global.metadataCID;
-            console.log(`Meatadata CID: ${metadataCID}`);
-            const netlifyMintUrl = `/.netlify/functions/tatum-mint?metadataCID=${metadataCID}&wallet=${address}`;
-            try {
-              const netlifyMintResponse = await fetch(netlifyMintUrl).then(
-                res => res.json()
-              );
-              const txnID = netlifyMintResponse.txnID;
-              global.update({
-                ...global,
-                txnID: txnID,
-              });
-              !netlifyMintResponse.txnID
-                ? setIsReturned({ isLoaded: true, isFailed: true })
-                : setIsReturned({ isLoaded: true, isFailed: false });
-            } catch {
-              setIsReturned({ isLoaded: true, isFailed: true });
-            }
-          }
-        } catch {
-          setIsReturned({ isLoaded: true, isFailed: true });
+          !txnID
+            ? setIsReturned({ ...isReturned, isFailed: true })
+            : setIsReturned({ ...isReturned, isLoaded: true });
         }
       };
       saveAndMint();
     } catch {
-      setIsReturned({ isLoaded: true, isFailed: true });
+      setIsReturned({ ...isReturned, isFailed: true });
     }
   }, []);
 
@@ -80,7 +71,7 @@ export default function Completed() {
         <div>
           <GenFailed actionString="NFT minting" />
         </div>
-      ) : isReturned.isLoaded ? (
+      ) : isReturned.isLoaded && !isReturned.isFailed ? (
         <Done
           txnID={global.txnID}
           address={address}

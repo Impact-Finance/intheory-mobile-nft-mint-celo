@@ -47,6 +47,7 @@ exports.handler = async function streamIPFS(event, context) {
       }
     };
     const badAddress = await checkValidWallet();
+    console.log(`Bad address: ${badAddress}`);
 
     if (badAddress === true) {
       console.log('inTheory NFT detected in wallet.');
@@ -76,6 +77,7 @@ exports.handler = async function streamIPFS(event, context) {
             properties: {
               author: 'Impact Finance',
               researchTopics: topics,
+              originalOwner: wallet,
             },
           },
         });
@@ -162,7 +164,7 @@ exports.handler = async function streamIPFS(event, context) {
   } catch {
     return {
       statusCode: 404,
-      body: JSON.stringify({ metadataCID: false }),
+      body: JSON.stringify({ metadataCID: false, badAddress: false }),
     };
   }
 };
