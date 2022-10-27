@@ -1,7 +1,19 @@
 import styles from '../styles/HowTo.module.css';
 import Link from 'next/link';
+import { useEffect, useContext } from 'react';
+import GlobalContext from '../utils/global-context';
 
 export default function HowTo() {
+  const global = useContext(GlobalContext);
+  useEffect(() => {
+    global.update({
+      ...global,
+      submittedTopics: [],
+      imageURL: '',
+      txnID: '',
+      metadataCID: '',
+    });
+  }, []);
   return (
     <>
       <div>

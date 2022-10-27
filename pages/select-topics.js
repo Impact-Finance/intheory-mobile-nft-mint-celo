@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/Select.module.css';
 import TopicsBlock from '../components/TopicsBlock';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import GlobalContext from '../utils/global-context';
 import FormHandler from '../components/FormHandler';
 
@@ -25,6 +25,16 @@ export default function SelectTopics() {
       submittedTopics: topics,
     });
   };
+
+  useEffect(() => {
+    global.update({
+      ...global,
+      submittedTopics: [],
+      imageURL: '',
+      txnID: '',
+      metadataCID: '',
+    });
+  }, []);
 
   return (
     <>

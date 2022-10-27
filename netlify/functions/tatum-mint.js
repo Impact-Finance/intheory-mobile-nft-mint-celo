@@ -49,7 +49,9 @@ exports.handler = async function tatumMint(event, context) {
         minter,
       },
     };
-    console.log(`Minting NFT. Metadata URL:${metaUrl}`);
+    if (!postConfig.data.url) {
+      throw 'No link to metadata found!';
+    }
     const txnID = await axios(postConfig).then(res => {
       return res.data.txId;
     });

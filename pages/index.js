@@ -1,7 +1,20 @@
 import styles from '../styles/Home.module.css';
+import GlobalContext from '../utils/global-context';
 import Link from 'next/link';
+import { useEffect, useContext } from 'react';
 
 export default function Home() {
+  const global = useContext(GlobalContext);
+  useEffect(() => {
+    global.update({
+      ...global,
+      submittedTopics: [],
+      imageURL: '',
+      txnID: '',
+      metadataCID: '',
+    });
+  }, []);
+
   return (
     <>
       <div>
