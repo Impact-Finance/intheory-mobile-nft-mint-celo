@@ -16,6 +16,7 @@ export default function Completed() {
   });
 
   const [badAddress, setBadAddress] = useState();
+  const [tokenId, setTokenId] = useState('');
 
   useEffect(() => {
     try {
@@ -47,6 +48,7 @@ export default function Completed() {
             res.json()
           );
           const txnID = netlifyMintResponse.txnID;
+          setTokenId(netlifyMintResponse.tokenId);
           global.update({
             ...global,
             txnID: txnID,
@@ -75,7 +77,7 @@ export default function Completed() {
         <Done
           txnID={global.txnID}
           address={address}
-          metadataCID={global.metadataCID}
+          tokenId={tokenId}
         />
       ) : (
         <div>

@@ -11,8 +11,6 @@ exports.handler = async function tatumMint(event, context) {
     const minter = '0x49678AAB11E001eb3cB2cBD9aA96b36DC2461A94';
     const metaUrl = `ipfs://${metadataCID}`;
 
-    // const tokenId = Date.now();
-
     const getResp = await fetch(
       `https://api-eu1.tatum.io/v3/nft/collection/${chain}/${contractAddress}?pageSize=50`,
       {
@@ -25,13 +23,15 @@ exports.handler = async function tatumMint(event, context) {
 
     const totalNFTs = await getResp.json();
 
-    const tokenId = () => {
+    const calcId = () => {
       if (totalNFTs.length >= 50) {
         return Date.now();
       } else {
         return totalNFTs.length + 1;
       }
     };
+
+    const tokenId = calcId();
 
     const postConfig = {
       method: 'post',
@@ -45,22 +45,23 @@ exports.handler = async function tatumMint(event, context) {
         to: wallet,
         url: metaUrl,
         contractAddress,
-        tokenId: tokenId(),
+        tokenId,
         minter,
       },
     };
+    console.log(`Minting NFT. Metadata URL:${metaUrl}`);
     const txnID = await axios(postConfig).then(res => {
       return res.data.txId;
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ txnID }),
+      body: JSON.stringify({ txnID, tokenId }),
     };
   } catch {
     return {
       statusCode: 404,
-      body: JSON.stringify({ txnID: '' }),
+      body: JSON.stringify({ txnID: '', tokenId: '' }),
     };
   }
 };

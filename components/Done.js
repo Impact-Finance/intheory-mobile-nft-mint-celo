@@ -51,18 +51,10 @@ function Done(props) {
           Your inTheory Pre-Launch NFT was successfully minted on Celo!
         </h3>
         <a
-          href={`https://nfts.valoraapp.com/?address=${props.address}`}
+          href={`https://explorer.celo.org/mainnet/token/${contractAddress}/instance/${props.tokenId}/metadata`}
           target="_blank"
           rel="noopener noreferrer">
           <button className="main-button">View NFT</button>
-        </a>
-        <br />
-        <a
-          className={styles.metalink}
-          href={`https://impact-finance.mypinata.cloud/ipfs/${props.metadataCID}`}
-          target="_blank"
-          rel="noopener noreferrer">
-          View metadata
         </a>
         <div className={styles.detailContainer}>
           <p className={styles.disclaimer}>
