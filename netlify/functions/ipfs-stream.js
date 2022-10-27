@@ -63,7 +63,7 @@ exports.handler = async function streamIPFS(event, context) {
       const pinNFTMetadata = async imageIPFSUrl => {
         var data = JSON.stringify({
           pinataOptions: {
-            cidVersion: 0,
+            cidVersion: 1,
             wrapWithDirectory: false,
           },
           pinataMetadata: {
