@@ -48,7 +48,10 @@ function Done(props) {
       <div>
         <h2>Congratulations!</h2>
         <h3 className={styles.success}>
-          Your inTheory Pre-Launch NFT was successfully minted on Celo!
+          Your inTheory Pre-Launch NFT was successfully minted on Celo! <br />
+          <span className={styles.explainer}>
+            It may take a moment for your NFT to be viewable.
+          </span>
         </h3>
         <a
           href={`https://explorer.celo.org/mainnet/token/${contractAddress}/instance/${props.tokenId}/metadata`}
