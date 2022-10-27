@@ -125,12 +125,14 @@ function Done(props) {
           href="https://ctt.ac/0Wrn2"
           target="_blank"
           rel="noopener noreferrer">
-          <Image
-            src="/images/twitter.svg"
-            alt="copy"
-            width={17}
-            height={17}
-          />{' '}
+          <span className={styles.icon}>
+            <Image
+              src="/images/twitter.svg"
+              alt="copy"
+              width={17}
+              height={17}
+            />
+          </span>
           Share
         </a>
         <a
@@ -138,12 +140,14 @@ function Done(props) {
           href="https://twitter.com/DeSci_Impact"
           target="_blank"
           rel="noopener noreferrer">
-          <Image
-            src="/images/twitter.svg"
-            alt="copy"
-            width={17}
-            height={17}
-          />{' '}
+          <span className={styles.icon}>
+            <Image
+              src="/images/twitter.svg"
+              alt="copy"
+              width={17}
+              height={17}
+            />
+          </span>
           Follow
         </a>
       </div>

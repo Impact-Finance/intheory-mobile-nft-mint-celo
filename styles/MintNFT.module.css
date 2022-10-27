@@ -41,7 +41,6 @@
 
 .tweetBox {
   display: flex;
-  justify-content: space-around;
 }
 
 .tweet {
@@ -53,6 +52,13 @@
   color: #002060;
   display: inline-block;
   font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  height: 1.4em;
+  margin-right: 5px;
 }
 
 @media screen and (max-width: 360px) {
