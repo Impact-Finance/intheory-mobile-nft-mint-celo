@@ -29,8 +29,10 @@ export default function Completed() {
           setBadAddress(netlifyCheckResponse.badAddress);
           if (netlifyCheckResponse.badAddress === false) {
             console.log('ADDRESS GOOD, MINTING NFT');
+            return true;
           } else {
             console.log('ADDRESS ALREADY HAS NFT, MINTING ABORTED');
+            return false;
           }
         } catch {
           setIsReturned({ ...isReturned, isFailed: true });
@@ -55,10 +57,20 @@ export default function Completed() {
           setIsReturned({ ...isReturned, isFailed: true });
         }
       };
-      checkWallet();
-      setTimeout(() => {
-        mintNFT(global.metadataCID);
-      }, 240000); // this timeout is to ensure that metadata is fetchable on IPFS after upload
+      const fullFunction = async () => {
+        await checkWallet().then(res => {
+          if (!res) {
+            console.log('MINTING ABORTED');
+          } else {
+            console.log('MINTING...');
+            setTimeout(() => {
+              console.log('MINTING ALMOST COMPLETE');
+              mintNFT(global.metadataCID);
+            }, 240000); // this timeout is to ensure that metadata is fetchable on IPFS after upload
+          }
+        });
+      };
+      fullFunction();
     } catch {
       setIsReturned({ ...isReturned, isFailed: true });
     }
@@ -67,7 +79,7 @@ export default function Completed() {
   return (
     <>
       {!address || badAddress ? (
-        <BadAddress />
+        <BadAddress wallet={address} />
       ) : isReturned.isFailed ? (
         <div>
           <GenFailed actionString="NFT minting" />

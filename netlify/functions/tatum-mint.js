@@ -76,7 +76,7 @@ exports.handler = async function tatumMint(event, context) {
       console.log(`Data found on IPFS: ${queryIPFS}`);
 
       if (!queryIPFS) {
-        await new Promise(res => setTimeout(res, 1500));
+        await new Promise(res => setTimeout(res, 1000));
         continue;
       } else {
         const txnID = await axios(postConfig).then(res => {

@@ -13,7 +13,16 @@ function ConnectedAccount(props) {
   return (
     <>
       {!global.metadataCID ? (
-        <h2 className={styles.connecting}>Finalizing connection.....</h2>
+        <>
+          <h2 className={styles.connecting}>Finalizing connection.....</h2>
+          <p style={{ fontSize: '0.85rem' }}>
+            If this page appears for more than 15 seconds,{' '}
+            <Link href="/select-topics">
+              <span className={styles.anchor}>click here</span>
+            </Link>{' '}
+            to try again.
+          </p>
+        </>
       ) : (
         <>
           <div>
