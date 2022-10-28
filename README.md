@@ -89,7 +89,7 @@ We use [Pinata](https://www.pinata.cloud/) for pinning images and NFT metadata t
 
 Our Pinata dedicated gateway is also used in **/components/Done.js** for displaying NFT metadata. Our dedicated gateway will only serve files pinned to our Pinata account, and so the URL will need to be reconfigured to function for your application.
 
-The process of minting the NFTs takes 4-5 minutes due to the latency inherent to interactions with IPFS. Without a waiting period after metadata upload, the process of attaching metadata to the token may fail.
+The process of minting the NFTs takes 5 minutes due to the latency inherent to interactions with IPFS. Without a waiting period after metadata upload, the process of attaching metadata to the token may fail.
 
 #### Tatum
 
