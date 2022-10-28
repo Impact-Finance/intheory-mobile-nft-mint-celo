@@ -35,6 +35,7 @@ const styles = [
   'synthwave',
   'cinematic 4K',
   'prismatic',
+  'cyberpunk',
 ];
 const colors = [
   'red',
