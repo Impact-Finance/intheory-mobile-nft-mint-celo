@@ -52,14 +52,42 @@ exports.handler = async function tatumMint(event, context) {
     if (!postConfig.data.url) {
       throw 'No link to metadata found!';
     }
-    const txnID = await axios(postConfig).then(res => {
-      return res.data.txId;
-    });
+    while (true === true) {
+      const queryConfig = {
+        method: 'get',
+        url: `https://api-eu1.tatum.io/v3/ipfs/${metadataCID}`,
+        headers: {
+          'x-api-key': TATUM_API_KEY,
+          Connection: 'keep-alive',
+        },
+      };
+      // console.log(queryConfig.url);
+      const queryIPFS = await axios(queryConfig)
+        .then(res => {
+          console.log('SUCCESS');
+          console.log(res.data);
+          return true;
+        })
+        .catch(err => {
+          console.log(`${err.response.status} ${err.response.statusText}`);
+          return false;
+        });
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ txnID, tokenId }),
-    };
+      console.log(`Data found on IPFS: ${queryIPFS}`);
+
+      if (!queryIPFS) {
+        await new Promise(res => setTimeout(res, 1500));
+        continue;
+      } else {
+        const txnID = await axios(postConfig).then(res => {
+          return res.data.txId;
+        });
+        return {
+          statusCode: 200,
+          body: JSON.stringify({ txnID, tokenId }),
+        };
+      }
+    }
   } catch {
     return {
       statusCode: 404,

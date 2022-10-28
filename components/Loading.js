@@ -13,22 +13,6 @@ function Loading(props) {
       <div>
         <h2>{props.action}</h2>
         <p>{props.message}</p>
-        {/* <div className="partner-ref">
-            <a
-              href="https://www.wombo.art/"
-              target="_blank"
-              rel="noopener noreferrer">
-              Generated with
-              <span className="logo">
-                <Image
-                  src="/images/wombo.png"
-                  alt="WOMBO.ai Logo"
-                  width={70}
-                  height={18}
-                />
-              </span>
-            </a>
-          </div> */}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import GlobalContext from '../utils/global-context';
 import { useContext, useEffect, useState } from 'react';
 import GenFailed from '../components/GenFailed';
-import Loading from '../components/Loading';
+import VidLoading from '../components/VidLoading';
 import Done from '../components/Done';
 import BadAddress from '../components/BadAddress';
 import { useCelo } from '@celo/react-celo';
@@ -20,30 +20,25 @@ export default function Completed() {
 
   useEffect(() => {
     try {
-      const saveAndMint = async () => {
-        const topicString = global.submittedTopics.join('%2C%20');
-        const encodedTopicString = topicString.replace(' ', '%20');
-        const imageURL = global.imageURL;
-        const encodedImageURL = encodeURIComponent(imageURL);
-
-        const netlifyIPFSUrl = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImageURL}&wallet=${address}`;
-
-        const netlifyIPFSResponse = await fetch(netlifyIPFSUrl).then(res =>
-          res.json()
-        );
-
-        const metadataCID = netlifyIPFSResponse.metadataCID;
-        setBadAddress(netlifyIPFSResponse.badAddress);
-        global.update({
-          ...global,
-          metadataCID: metadataCID,
-        });
-        !netlifyIPFSResponse.metadataCID &&
+      const checkWallet = async () => {
+        const netlifyCheckUrl = `/.netlify/functions/check-wallet?wallet=${address}`;
+        try {
+          const netlifyCheckResponse = await fetch(netlifyCheckUrl).then(res =>
+            res.json()
+          );
+          setBadAddress(netlifyCheckResponse.badAddress);
+          if (netlifyCheckResponse.badAddress === false) {
+            console.log('ADDRESS GOOD, MINTING NFT');
+          } else {
+            console.log('ADDRESS ALREADY HAS NFT, MINTING ABORTED');
+          }
+        } catch {
           setIsReturned({ ...isReturned, isFailed: true });
-        if (netlifyIPFSResponse.badAddress === false) {
-          console.log('ADDRESS GOOD, MINTING NFT');
-          console.log(`Metadata CID: ${metadataCID}`);
-          const netlifyMintUrl = `/.netlify/functions/tatum-mint?metadataCID=${metadataCID}&wallet=${address}`;
+        }
+      };
+      const mintNFT = async metadataCID => {
+        const netlifyMintUrl = `/.netlify/functions/tatum-mint?metadataCID=${metadataCID}&wallet=${address}`;
+        try {
           const netlifyMintResponse = await fetch(netlifyMintUrl).then(res =>
             res.json()
           );
@@ -52,14 +47,18 @@ export default function Completed() {
           global.update({
             ...global,
             txnID: txnID,
-            metadataCID: metadataCID,
           });
           !txnID
             ? setIsReturned({ ...isReturned, isFailed: true })
             : setIsReturned({ ...isReturned, isLoaded: true });
+        } catch {
+          setIsReturned({ ...isReturned, isFailed: true });
         }
       };
-      saveAndMint();
+      checkWallet();
+      setTimeout(() => {
+        mintNFT(global.metadataCID);
+      }, 240000); // this timeout is to ensure that metadata is fetchable on IPFS after upload
     } catch {
       setIsReturned({ ...isReturned, isFailed: true });
     }
@@ -80,12 +79,7 @@ export default function Completed() {
           tokenId={tokenId}
         />
       ) : (
-        <div>
-          <Loading
-            action="Minting NFT..."
-            message="Creating metadata and minting on the Celo blockchain"
-          />
-        </div>
+        <VidLoading />
       )}
     </>
   );

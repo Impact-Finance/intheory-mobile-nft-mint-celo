@@ -2,6 +2,10 @@ import styles from '../styles/GenerateImage.module.css';
 import Link from 'next/link';
 
 function ReturnedImage(props) {
+  const handleClick = () => {
+    props.sendIPFS();
+  };
+
   return (
     <>
       <div>
@@ -14,7 +18,11 @@ function ReturnedImage(props) {
       <div>
         <div>
           <Link href="/mint-nft">
-            <button className="gradient-border main-button">Mint as NFT</button>
+            <button
+              onClick={handleClick}
+              className="gradient-border main-button">
+              Mint as NFT
+            </button>
           </Link>
         </div>
         <div

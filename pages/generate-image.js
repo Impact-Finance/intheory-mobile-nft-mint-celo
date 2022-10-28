@@ -12,6 +12,34 @@ export default function GenerateImage() {
     isFailed: false,
   });
 
+  const sendIPFS = async () => {
+    const topicString = global.submittedTopics.join('%2C%20');
+    const encodedTopicString = topicString.replace(' ', '%20');
+    const imageURL = global.imageURL;
+    const encodedImageURL = encodeURIComponent(imageURL);
+
+    const netlifyIPFSUrl = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImageURL}`;
+
+    const netlifyIPFSResponse = await fetch(netlifyIPFSUrl).then(res =>
+      res.json()
+    );
+
+    const metadataCID = netlifyIPFSResponse.metadataCID;
+    global.update({
+      ...global,
+      metadataCID: metadataCID,
+    });
+    !netlifyIPFSResponse.metadataCID &&
+      setIsReturned({ ...isReturned, isFailed: true });
+    if (!metadataCID) {
+      console.log('ERROR UPLOADING METADATA TO IPFS');
+    } else {
+      console.log(
+        `METADATA SUCCESSFULLY UPLOADED TO IPFS. CID: ${metadataCID}`
+      );
+    }
+  };
+
   useEffect(() => {
     try {
       async function makeAPICall() {
@@ -51,7 +79,10 @@ export default function GenerateImage() {
       {isReturned.isFailed ? (
         <GenFailed actionString="Image generation" />
       ) : isReturned.isLoaded ? (
-        <ReturnedImage imageURL={global.imageURL} />
+        <ReturnedImage
+          imageURL={global.imageURL}
+          sendIPFS={sendIPFS}
+        />
       ) : (
         <Loading
           action="Generating image..."

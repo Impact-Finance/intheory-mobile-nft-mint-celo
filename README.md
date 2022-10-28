@@ -1,6 +1,6 @@
-[![GitHub license](https://img.shields.io/github/license/Impact-Finance/intheory-mobile-nft-mint-celo)](https://github.com/Impact-Finance/intheory-mobile-nft-mint-celo/blob/main/LICENSE) [![GitHub forks](https://img.shields.io/github/forks/Impact-Finance/intheory-mobile-nft-mint-celo)](https://github.com/Impact-Finance/intheory-mobile-nft-mint-celo/network) [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDeSci_Impact)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FImpact-Finance%2Fintheory-mobile-nft-mint-celo)
-
 # inTheory Pre-Launch NFT Minting App
+
+[![GitHub license](https://img.shields.io/github/license/Impact-Finance/intheory-mobile-nft-mint-celo)](https://github.com/Impact-Finance/intheory-mobile-nft-mint-celo/blob/main/LICENSE) [![GitHub forks](https://img.shields.io/github/forks/Impact-Finance/intheory-mobile-nft-mint-celo)](https://github.com/Impact-Finance/intheory-mobile-nft-mint-celo/network) [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FDeSci_Impact)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FImpact-Finance%2Fintheory-mobile-nft-mint-celo)
 
 #### Built by [Impact Finance](https://impact-finance.io)
 
@@ -88,6 +88,8 @@ import '@celo/react-celo/lib/styles.css';
 We use [Pinata](https://www.pinata.cloud/) for pinning images and NFT metadata to IPFS. The API call to do so can be found in **/netlify/functions/ipfs-stream.js**. This function contains the NFT metadata schema that should be adjusted for your specific use case.
 
 Our Pinata dedicated gateway is also used in **/components/Done.js** for displaying NFT metadata. Our dedicated gateway will only serve files pinned to our Pinata account, and so the URL will need to be reconfigured to function for your application.
+
+The process of minting the NFTs takes 4-5 minutes due to the latency inherent to interactions with IPFS. Without a waiting period after metadata upload, the process of attaching metadata to the token may fail.
 
 #### Tatum
 

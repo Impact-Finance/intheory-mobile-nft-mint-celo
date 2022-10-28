@@ -36,6 +36,28 @@
   margin-bottom: 15px;
   box-shadow: 0px 0px 6px #002060;
 }
+.vidLoading {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.vidAlt {
+  color: #68eaff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.afterVid {
+  color: #68eaff;
+  line-height: 2rem;
+}
+
+.submessage {
+  font-size: 0.9rem;
+  filter: opacity(0.7);
+}
 
 @keyframes animate {
   from {
@@ -43,5 +65,16 @@
   }
   to {
     height: 70px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .video {
+    display: none;
+  }
+}
+@media screen and (min-width: 360px) {
+  .vidAlt {
+    display: none;
   }
 }
