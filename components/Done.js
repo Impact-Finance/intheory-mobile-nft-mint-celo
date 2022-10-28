@@ -54,7 +54,7 @@ function Done(props) {
           </span>
         </h3>
         <a
-          href={`https://explorer.celo.org/mainnet/token/${contractAddress}/instance/${props.tokenId}/metadata`}
+          href={`https://explorer.celo.org/mainnet/token/${contractAddress}/instance/${props.tokenId}`}
           target="_blank"
           rel="noopener noreferrer">
           <button className="main-button">View NFT</button>
