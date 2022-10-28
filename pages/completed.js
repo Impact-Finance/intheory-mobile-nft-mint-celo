@@ -66,7 +66,7 @@ export default function Completed() {
             setTimeout(() => {
               console.log('MINTING ALMOST COMPLETE');
               mintNFT(global.metadataCID);
-            }, 2740000); // this timeout is to ensure that metadata is fetchable on IPFS after upload
+            }, 274000); // this timeout is to ensure that metadata is fetchable on IPFS after upload
           }
         });
       };
