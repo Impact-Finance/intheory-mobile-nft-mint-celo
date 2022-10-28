@@ -30,7 +30,7 @@ function VidLoading() {
             </h3>
           )}
           <p className={styles.submessage}>
-            Don't close this page or your artwork could be lost forever!
+            Don&apos;t close this page or your artwork could be lost forever!
           </p>
         </div>
       </div>
