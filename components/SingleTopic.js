@@ -1,5 +1,6 @@
 import styles from '../styles/SingleTopic.module.css';
 import useToggle from '../hooks/useToggle';
+import React, { useEffect } from 'react';
 
 export default function SingleTopic(props) {
   const [isSelected, toggleIsSelected] = useToggle(false);
@@ -11,6 +12,14 @@ export default function SingleTopic(props) {
     }
     toggleIsSelected();
   };
+
+  useEffect(() => {
+    const prev = props.previousTopics;
+    if (prev.includes(props.name)) {
+      toggleIsSelected();
+      props.addTopic(props.name);
+    }
+  }, []);
 
   return (
     <span

@@ -11,6 +11,7 @@ export default function TopicsBlock(props) {
           key={topic}
           addTopic={props.addTopic}
           removeTopic={props.removeTopic}
+          previousTopics={props.previousTopics}
         />
       ))}
     </div>

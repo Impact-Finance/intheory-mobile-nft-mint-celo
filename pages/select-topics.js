@@ -29,11 +29,11 @@ export default function SelectTopics() {
   useEffect(() => {
     global.update({
       ...global,
-      submittedTopics: [],
       imageURL: '',
       txnID: '',
       metadataCID: '',
     });
+    setTopics(global.submittedTopics);
   }, []);
 
   return (
@@ -59,6 +59,7 @@ export default function SelectTopics() {
       <TopicsBlock
         addTopic={addTopic}
         removeTopic={removeTopic}
+        previousTopics={global.submittedTopics}
       />
       <FormHandler
         topics={topics}
