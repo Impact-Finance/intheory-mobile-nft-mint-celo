@@ -82,7 +82,10 @@ export default function Completed() {
         <BadAddress wallet={address} />
       ) : isReturned.isFailed ? (
         <div>
-          <GenFailed actionString="NFT minting" />
+          <GenFailed
+            actionString="NFT minting"
+            destination="/generate-image"
+          />
         </div>
       ) : isReturned.isLoaded && !isReturned.isFailed ? (
         <Done

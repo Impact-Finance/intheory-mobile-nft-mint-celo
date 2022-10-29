@@ -24,13 +24,18 @@ export default function Home() {
           NFT Mint
         </h1>
         <p style={{ fontSize: '1.4em' }}>
-          Mint your free research-inspired NFT artwork to show your support for
-          decentralized science.
+          Mint your <strong>free</strong> research-inspired NFT artwork to show
+          your support for decentralized science.
         </p>
       </div>
-      <Link href="/how-it-works">
-        <button className="gradient-border main-button">Start →</button>
-      </Link>
+      <div>
+        <Link href="/how-it-works">
+          <button className="gradient-border main-button">Start →</button>
+        </Link>
+        <p style={{ filter: 'opacity(0.7)' }}>
+          We&apos;ll even cover the gas fees.
+        </p>
+      </div>
     </>
   );
 }

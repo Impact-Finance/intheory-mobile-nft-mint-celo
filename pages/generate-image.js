@@ -13,30 +13,35 @@ export default function GenerateImage() {
   });
 
   const sendIPFS = async () => {
-    const topicString = global.submittedTopics.join('%2C%20');
-    const encodedTopicString = topicString.replace(' ', '%20');
-    const imageURL = global.imageURL;
-    const encodedImageURL = encodeURIComponent(imageURL);
+    const prevMeta = global.metadataCID;
+    if (!prevMeta) {
+      const topicString = global.submittedTopics.join('%2C%20');
+      const encodedTopicString = topicString.replace(' ', '%20');
+      const imageURL = global.imageURL;
+      const encodedImageURL = encodeURIComponent(imageURL);
 
-    const netlifyIPFSUrl = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImageURL}`;
+      const netlifyIPFSUrl = `/.netlify/functions/ipfs-stream?topics=${encodedTopicString}&imageUrl=${encodedImageURL}`;
 
-    const netlifyIPFSResponse = await fetch(netlifyIPFSUrl).then(res =>
-      res.json()
-    );
-
-    const metadataCID = netlifyIPFSResponse.metadataCID;
-    global.update({
-      ...global,
-      metadataCID: metadataCID,
-    });
-    !netlifyIPFSResponse.metadataCID &&
-      setIsReturned({ ...isReturned, isFailed: true });
-    if (!metadataCID) {
-      console.log('ERROR UPLOADING METADATA TO IPFS');
-    } else {
-      console.log(
-        `METADATA SUCCESSFULLY UPLOADED TO IPFS. CID: ${metadataCID}`
+      const netlifyIPFSResponse = await fetch(netlifyIPFSUrl).then(res =>
+        res.json()
       );
+
+      const metadataCID = netlifyIPFSResponse.metadataCID;
+      global.update({
+        ...global,
+        metadataCID: metadataCID,
+      });
+      !netlifyIPFSResponse.metadataCID &&
+        setIsReturned({ ...isReturned, isFailed: true });
+      if (!metadataCID) {
+        console.log('ERROR UPLOADING METADATA TO IPFS');
+      } else {
+        console.log(
+          `METADATA SUCCESSFULLY UPLOADED TO IPFS. CID: ${metadataCID}`
+        );
+      }
+    } else {
+      console.log('METADATA ALREADY ON IPFS, CID: ' + prevMeta);
     }
   };
 
@@ -68,7 +73,11 @@ export default function GenerateImage() {
           setIsReturned({ isLoaded: true, isFailed: true });
         }
       }
-      makeAPICall();
+      if (!global.imageURL) {
+        makeAPICall();
+      } else {
+        setIsReturned({ isLoaded: true, isFailed: false });
+      }
     } catch {
       setIsReturned({ isLoaded: true, isFailed: true });
     }
@@ -77,7 +86,10 @@ export default function GenerateImage() {
   return (
     <div>
       {isReturned.isFailed ? (
-        <GenFailed actionString="Image generation" />
+        <GenFailed
+          actionString="Image generation"
+          destination="/select-topics"
+        />
       ) : isReturned.isLoaded ? (
         <ReturnedImage
           imageURL={global.imageURL}

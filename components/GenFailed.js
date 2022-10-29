@@ -13,7 +13,7 @@ function GenFailed(props) {
         />
         <h3>Uh oh! {props.actionString} failed!</h3>
       </div>
-      <Link href="/select-topics">
+      <Link href={props.destination}>
         <button className="main-button">Try again</button>
       </Link>
     </>
