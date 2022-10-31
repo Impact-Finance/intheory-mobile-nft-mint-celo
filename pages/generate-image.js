@@ -12,6 +12,15 @@ export default function GenerateImage() {
     isFailed: false,
   });
 
+  const pollIPFS = async metadataCID => {
+    const netlifyPollUrl = `/.netlify/functions/begin-polling-background?metadataCID=${metadataCID}`;
+    await fetch(netlifyPollUrl)
+      .then(res => res.json())
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
   const sendIPFS = async () => {
     const prevMeta = global.metadataCID;
     if (!prevMeta) {
@@ -39,6 +48,8 @@ export default function GenerateImage() {
         console.log(
           `METADATA SUCCESSFULLY UPLOADED TO IPFS. CID: ${metadataCID}`
         );
+        console.log('BEGINNING POLLING OF IPFS.');
+        await pollIPFS(metadataCID);
       }
     } else {
       console.log('METADATA ALREADY ON IPFS, CID: ' + prevMeta);

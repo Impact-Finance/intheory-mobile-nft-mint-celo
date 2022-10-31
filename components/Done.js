@@ -54,7 +54,9 @@ function Done(props) {
           </span>
         </h3>
         <a
-          href={`https://explorer.celo.org/mainnet/token/${contractAddress}/instance/${props.tokenId}/token-transfers`}
+          href={`https://explorer.celo.org/mainnet/token/${contractAddress.toLowerCase()}/instance/${
+            props.tokenId
+          }/token-transfers`}
           target="_blank"
           rel="noopener noreferrer">
           <button className="main-button">View NFT</button>

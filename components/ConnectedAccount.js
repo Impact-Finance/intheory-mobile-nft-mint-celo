@@ -16,7 +16,7 @@ function ConnectedAccount(props) {
         <>
           <h2 className={styles.connecting}>Finalizing image.....</h2>
           <p style={{ fontSize: '0.85rem' }}>
-            If this page appears for more than 15 seconds,{' '}
+            If this page appears for more than 20 seconds,{' '}
             <Link href="/generate-image">
               <span className={styles.anchor}>click here</span>
             </Link>{' '}

@@ -10,7 +10,7 @@ function VidLoading() {
   return (
     <>
       <h2>Minting NFT...</h2>
-      <h3>This will take 3-5 minutes.</h3>
+      <h3>This will take 3-4 minutes.</h3>
       <p>
         In the meantime, check out this short video for a sneak peak of what you
         can expect when inTheory launches in 2023.

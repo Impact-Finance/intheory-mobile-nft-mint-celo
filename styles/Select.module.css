@@ -28,3 +28,9 @@
   font-weight: 600;
   font-size: 0.8em;
 }
+
+@media screen and (max-width: 360px) {
+  .warning {
+    font-size: 0.7em;
+  }
+}

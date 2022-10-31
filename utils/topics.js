@@ -23,7 +23,8 @@ const topics = [
   'Climate Research',
   'Psychology',
   'Economics',
-  'Social Sciences',
+  'Psychedelics',
+  'Sociology',
   'Pharmaceuticals',
 ];
 
