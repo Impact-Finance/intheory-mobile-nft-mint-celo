@@ -64,7 +64,7 @@ const adjectives = [
   'jubilant',
   'arcane',
   'epic',
-  'fantastic',
+  'fantasy',
   'monumental',
   'rule of thirds',
   'atmospheric',
