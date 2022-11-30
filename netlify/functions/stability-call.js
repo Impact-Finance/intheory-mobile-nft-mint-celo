@@ -23,7 +23,7 @@ exports.handler = async function callStability(event, context) {
     };
     const post_payload = {
       version:
-        'a826166bdfbd1c12981a2e914120aa8c19ab2b5474ff8c70f4e2923e6d6596cc',
+        '27b93a2413e7f36cd83da926f3656280b2931564ff050bf9575f1fdf9bcd7478',
       input: { prompt: prompt, width: 512, height: 896 },
     };
 
