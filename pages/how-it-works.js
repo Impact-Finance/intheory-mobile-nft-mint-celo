@@ -22,7 +22,7 @@ export default function HowTo() {
           <span className={styles.numberIcon}>1</span>
           <p className={styles.stepDescription}>
             Select up to 3 research topics. Your choices will influence the
-            selection of inTheory's first project cohort.
+            selection of inTheory&apos;s first project cohort.
           </p>
         </div>
         <div className={styles.stepItem}>
