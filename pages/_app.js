@@ -113,7 +113,7 @@ export default function MyApp({ Component, pageProps }) {
                   <Image
                     src="/images/intheory-logo.png"
                     alt="inTheory Logo"
-                    width={592}
+                    width={505}
                     height={125}
                   />
                 </div>

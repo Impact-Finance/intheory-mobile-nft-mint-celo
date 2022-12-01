@@ -21,15 +21,15 @@ export default function HowTo() {
         <div className={styles.stepItem}>
           <span className={styles.numberIcon}>1</span>
           <p className={styles.stepDescription}>
-            Select the research topics that align with your interests. Your
-            selection helps decide the first projects funded by inTheory.
+            Select up to 3 research topics. Your choices will influence the
+            selection of inTheory's first project cohort.
           </p>
         </div>
         <div className={styles.stepItem}>
           <span className={styles.numberIcon}>2</span>
           <p className={styles.stepDescription}>
             An AI-generated artwork inspired by your selection is created and
-            minted as a unique NFT.
+            minted as an NFT.
           </p>
         </div>
         <div className={styles.stepItem}>

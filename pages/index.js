@@ -24,8 +24,8 @@ export default function Home() {
           NFT Mint
         </h1>
         <p style={{ fontSize: '1.4em' }}>
-          Mint your <strong>free</strong> research-inspired NFT artwork to show
-          your support for decentralized science.
+          Mint your <strong>free</strong> research-inspired NFT artwork to
+          unlock exclusive benefits when inTheory launches in 2023.
         </p>
       </div>
       <div>
