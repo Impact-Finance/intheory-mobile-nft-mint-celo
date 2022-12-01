@@ -16,7 +16,7 @@ export default class OurVideo extends React.Component {
       <>
         <div className={styles.video}>
           <YouTube
-            videoId="HHyFnCi6wQk"
+            videoId="0Q7LIPkxScs"
             opts={opts}
             onReady={this._onReady}
             onEnd={this.props.endFunction}
