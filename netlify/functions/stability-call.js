@@ -14,7 +14,7 @@ exports.handler = async function callStability(event, context) {
     )}, ${randomDescriptor('style')} style, no text`;
     console.log(prompt);
 
-    const BASE_URL = 'https://api.replicate.com/v1/predictions';
+    // const BASE_URL = 'https://api.replicate.com/v1/predictions';
     const headers = {
       headers: {
         Authorization: `Token ${process.env.REPLICATION_STABILITY_API_KEY}`,

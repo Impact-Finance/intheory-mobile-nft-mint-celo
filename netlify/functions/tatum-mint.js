@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 exports.handler = async function tatumMint(event, context) {
   try {
     const { metadataCID, wallet } = event.queryStringParameters;
-    const TATUM_API_KEY = process.env.TATUM_API_KEY;
+    // const TATUM_API_KEY = process.env.TATUM_API_KEY;
 
     const chain = 'CELO';
     const contractAddress = process.env.contractAddress;

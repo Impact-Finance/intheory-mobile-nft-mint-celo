@@ -13,10 +13,10 @@ exports.handler = async function streamIPFS(event, context) {
   try {
     const { topics, imageUrl } = event.queryStringParameters;
     const id = uuid();
-    const s3AccessKeyId = process.env.s3AccessKeyId;
-    const s3AccessSecret = process.env.s3AccessSecret;
-    const s3Region = process.env.s3Region;
-    const s3Bucket = process.env.s3Bucket;
+    // const s3AccessKeyId = process.env.s3AccessKeyId;
+    // const s3AccessSecret = process.env.s3AccessSecret;
+    // const s3Region = process.env.s3Region;
+    // const s3Bucket = process.env.s3Bucket;
 
     s3 = new AWS.S3({
       credentials: {
