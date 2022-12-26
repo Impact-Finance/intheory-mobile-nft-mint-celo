@@ -25,7 +25,7 @@ export default function Home() {
         </h1>
         <p style={{ fontSize: '1.4em' }}>
           The minting period has{' '}
-          <strong style={{ color: '#fe00fe' }}>closed</strong>.
+          <strong style={{ color: '#68eaff' }}>closed</strong>.
         </p>
         <p>
           <strong>6,961</strong> inTheory NFTs minted
