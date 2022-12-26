@@ -24,13 +24,17 @@ export default function Home() {
           NFT Mint
         </h1>
         <p style={{ fontSize: '1.4em' }}>
-          Mint your <strong>free</strong> research-inspired NFT artwork to
-          unlock exclusive benefits when inTheory launches in 2023.
+          The minting period has{' '}
+          <strong style={{ color: '#fe00fe' }}>closed</strong>.
         </p>
       </div>
       <div>
         <Link href="/how-it-works">
-          <button className="gradient-border main-button">Start →</button>
+          <button
+            className="main-button"
+            disabled>
+            Start →
+          </button>
         </Link>
         <p style={{ filter: 'opacity(0.7)' }}>
           We&apos;ll even cover the gas fees.
