@@ -85,7 +85,7 @@ export default function GenerateImage() {
         }
       }
       if (!global.imageURL) {
-        makeAPICall();
+        // makeAPICall();
       } else {
         setIsReturned({ isLoaded: true, isFailed: false });
       }

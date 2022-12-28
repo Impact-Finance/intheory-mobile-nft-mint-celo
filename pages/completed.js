@@ -70,7 +70,7 @@ export default function Completed() {
           }
         });
       };
-      fullFunction();
+      // fullFunction();
     } catch {
       setIsReturned({ ...isReturned, isFailed: true });
     }
