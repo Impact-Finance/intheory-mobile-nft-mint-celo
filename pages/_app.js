@@ -129,7 +129,7 @@ export default function MyApp({ Component, pageProps }) {
               Built by Impact Finance
               <span className="logo">
                 <Image
-                  src="/images/IF.svg"
+                  src="/images/iF.svg"
                   alt="Impact Finance Logo"
                   width={19}
                   height={16}
