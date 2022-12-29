@@ -1,20 +1,4 @@
-import styles from '../styles/Home.module.css';
-import GlobalContext from '../utils/global-context';
-import Link from 'next/link';
-import { useEffect, useContext } from 'react';
-
 export default function Home() {
-  const global = useContext(GlobalContext);
-  useEffect(() => {
-    global.update({
-      ...global,
-      submittedTopics: [],
-      imageURL: '',
-      txnID: '',
-      metadataCID: '',
-    });
-  }, []);
-
   return (
     <>
       <div>
@@ -38,18 +22,6 @@ export default function Home() {
             rel="noopener noreferrer">
             View on Explorer →
           </a>
-        </p>
-      </div>
-      <div>
-        <Link href="/how-it-works">
-          <button
-            className="main-button"
-            disabled>
-            Start →
-          </button>
-        </Link>
-        <p style={{ filter: 'opacity(0.7)' }}>
-          We&apos;ll even cover the gas fees.
         </p>
       </div>
     </>
