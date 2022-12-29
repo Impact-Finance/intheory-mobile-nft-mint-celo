@@ -1,3 +1,5 @@
+//updated application to close mint window
+
 export default function Home() {
   return (
     <>
